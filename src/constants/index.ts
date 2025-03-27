@@ -1,6 +1,9 @@
 export const CardWidth: ChakraResponsive = {base:'100px', md:'150px'};
+
 export const CardHeight: ChakraResponsive = {base:'150px', md:'200px'};
-export const H1FontSize: ChakraResponsive = {base:'18px', md:'25px', lg:'32px'}
+
+export const H1FontSize: ChakraResponsive = {base:'18px', md:'25px', lg:'32px'};
+
 export const CardCarouselSettings = {
   dots: false,
   infinite: true,
@@ -38,9 +41,22 @@ export const CardCarouselSettings = {
       // Layar di bawah 2600px (atau tak terbatas jika Anda mau)
       breakpoint: 2600,
       settings: {
-        slidesToShow: 7,
-        slidesToScroll: 7,
+        slidesToShow: 6,
+        slidesToScroll: 6,
       },
     },
   ]
 };
+
+export const NavLinks:NavLinkProps[] = [
+  {
+    id: 1,
+    label: 'discover',
+    link: '/'
+  },
+  {
+    id: 2,
+    label: 'browse',
+    link: '/browse'
+  },
+]

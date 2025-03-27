@@ -1,24 +1,24 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface UtilityState {
-  count: number
+  isMobileNavMenuClick: boolean
 }
 
 const initialState: UtilityState = {
-  count: 0  
+  isMobileNavMenuClick: false
 };
 
 const utilitySlice = createSlice({
   name: 'utility',
   initialState,
   reducers: {
-    setCount: (state, action:PayloadAction<number>) => {
-      state.count = action.payload
+    setMobileNavMenu: (state, action:PayloadAction<boolean>) => {
+      state.isMobileNavMenuClick = action.payload
     }
   },
 });
 
 export const {
-  setCount
+  setMobileNavMenu
 } = utilitySlice.actions;
 export default utilitySlice.reducer

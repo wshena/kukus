@@ -14,6 +14,11 @@ interface SectionAndTitleProps {
   children?: React.ReactNode
 }
 
+type NavLinkProps = {
+  id: number,
+  label: string,
+  link: string
+}
 type HttpMethod = 'get' | 'post' | 'put' | 'delete';
 type FetcherParams = Record<string, any>;
 type ChakraResponsive =
