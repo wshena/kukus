@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Mona_Sans } from "next/font/google";
 import "./globals.css";
-import AppProvider from "@/components/providers/AppProvider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import AppProvider from "@/components/providers/AppProvider";
+import ProgressBar from "@/components/ProgressBar";
+import { Toaster } from "@/components/ui/toaster";
 
 const monaSans = Mona_Sans({
   variable: "--font-mona-sans",
@@ -27,6 +29,8 @@ export default function RootLayout({
       >
         <AppProvider>
           {children}
+          <Toaster />
+          <ProgressBar />
         </AppProvider>
       </body>
     </html>

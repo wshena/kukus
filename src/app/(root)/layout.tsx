@@ -2,9 +2,12 @@ import React from 'react'
 
 const RootLayout = ({children}:{children:React.ReactNode}) => {
   return (
-    <div>      
+    <>      
+      <nav>
+        <h1>navbar</h1>
+      </nav>
       {children}
-    </div>
+    </>
   )
 }
 

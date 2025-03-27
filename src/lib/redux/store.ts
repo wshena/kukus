@@ -3,7 +3,7 @@ import { Action, combineReducers, configureStore, ThunkAction } from "@reduxjs/t
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-import utilityReducer from '@/lib/redux/slice/utilitySlice'
+import utilityReducer from '@/lib/redux/slice/utility.action'
 
 const persistConfig = {
   key: 'root',
