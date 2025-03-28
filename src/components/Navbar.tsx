@@ -4,6 +4,8 @@ import Link from 'next/link'
 import React from 'react'
 import MobileNavMenuButton from './buttons/MobileNavMenuButton'
 import Logo from './Logo'
+import SigninButton from './buttons/SigninButton'
+import LoginButton from './buttons/LoginButton'
 
 const NavLink = ({data}:{data:NavLinkProps}) => {
   return (
@@ -30,8 +32,8 @@ const Navbar = () => {
               ))}
             </Flex>
             <Flex display={{base:'none', md:'flex'}} alignItems={'center'} gap={'10px'}>              
-              <h1>login</h1>
-              <h1>sign in</h1>
+              <LoginButton />
+              <SigninButton />
             </Flex>
           </Flex>
         </nav>

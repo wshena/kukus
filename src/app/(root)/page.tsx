@@ -3,7 +3,7 @@ import MainWrapper from '@/components/MainWrapper'
 import { getGameList } from '@/utils/actions/fetcher.action'
 import CardCarousel from '@/components/carousels/CardCarousel'
 import { getThreeRandomItems } from '@/utils/actions/general.action'
-import { Flex } from '@chakra-ui/react'
+import { Center, Flex } from '@chakra-ui/react'
 import MediumGameCard from '@/components/cards/MediumGameCard'
 
 const page = async () => {
@@ -31,9 +31,11 @@ const page = async () => {
         data={upcomingReleasedGameList} 
       />
       
-      <Flex width={'100%'} alignItems={'center'} justifyContent={'space-between'} flexWrap={'wrap'}>
+      <Flex width={'100%'} gap={{base:'20px', md:'0px'}} alignItems={'center'} justifyContent={'space-between'} flexWrap={'wrap'}>
         {threeRandomGameList?.map((item:any) => (
-          <MediumGameCard key={item?.id} data={item} />
+          <Center width={{base:'100%', md:'fit-content'}} key={item?.id}>
+            <MediumGameCard key={item?.id} data={item} />
+          </Center>
         ))}
       </Flex>
 
@@ -43,9 +45,11 @@ const page = async () => {
         data={MostPopularGameList}
       />
 
-      <Flex width={'100%'} alignItems={'center'} justifyContent={'space-between'} flexWrap={'wrap'}>
+      <Flex width={'100%'} gap={{base:'20px', md:'0px'}} alignItems={'center'} justifyContent={'space-between'} flexWrap={'wrap'}>
         {threeRandomRecentyUpdated?.map((item:any) => (
-          <MediumGameCard key={item?.id} data={item} />
+          <Center width={{base:'100%', md:'fit-content'}} key={item?.id}>
+            <MediumGameCard key={item?.id} data={item} />
+          </Center>
         ))}
       </Flex>
 
@@ -55,9 +59,11 @@ const page = async () => {
         data={recentlyUpdatedGameList} 
       />
 
-      <Flex width={'100%'} alignItems={'center'} justifyContent={'space-between'} flexWrap={'wrap'}>
+      <Flex width={'100%'} gap={{base:'20px', md:'0px'}} alignItems={'center'} justifyContent={'space-between'} flexWrap={'wrap'}>
         {threeRandomMostPopular?.map((item:any) => (
-          <MediumGameCard key={item?.id} data={item} />
+          <Center width={{base:'100%', md:'fit-content'}} key={item?.id}>
+            <MediumGameCard key={item?.id} data={item} />
+          </Center>
         ))}
       </Flex>
     </MainWrapper>
