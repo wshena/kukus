@@ -11,7 +11,7 @@ const GameDetailTabs = ({id, slug}:{id:number, slug:string}) => {
 
   return (
     <Box width={'100%'} overflowX={'auto'}>
-      <Flex alignItems={'center'} width={'100%'} gap={{base:'15px', md:'20px'}}>
+      <Flex alignItems={'center'} width={{base:'490px', md:'100%'}} gap={{base:'15px', md:'20px'}}>
         {DetailTabs?.map((item:any) => {
           const generateUrl = () => {
             switch (item.label) {
