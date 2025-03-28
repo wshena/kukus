@@ -7,13 +7,18 @@ import Slider from 'react-slick';
 import Carousel from './Carousel';
 import { CardSkeleton } from '../skeletons/Skeletons';
 import { CardCarouselSettings, H1FontSize } from '@/constants';
+import GameCard from '../cards/GameCard';
 
 interface Props {
   title: string;
   url: string;
+  data: {
+    success: boolean,
+    res: any
+  }
 }
 
-const Game_Carousel = ({title, url}:Props) => {
+const Game_Carousel = ({title, url, data}:Props) => {
   const sliderRef = useRef<Slider>(null);
 
   const handleNext = () => {
@@ -49,17 +54,29 @@ const Game_Carousel = ({title, url}:Props) => {
         </Flex>
       </Flex>
 
-      <Carousel ref={sliderRef} settings={CardCarouselSettings}>
-        {Array.from({ length: 20 }).map((_, idx:number) => {
-          return (
-            <Box key={idx} className="">
+      {!data ? (
+        <Carousel ref={sliderRef} settings={CardCarouselSettings}>
+          {Array.from({ length: 20 }).map((_, idx:number) => {
+            return (
+              <Box key={idx} className="">
+                <Center width={'100%'}>
+                  <CardSkeleton />
+                </Center>
+              </Box>
+            )
+          })}
+        </Carousel>
+      ) : (
+        <Carousel ref={sliderRef} settings={CardCarouselSettings}>
+          {data?.res?.results?.map((item:any) => (
+            <Box key={item.id} className="">
               <Center width={'100%'}>
-                <CardSkeleton />
+                <GameCard data={item} />
               </Center>
             </Box>
-          )
-        })}
-      </Carousel>
+          ))}
+        </Carousel>
+      )}
 
       {/* next prev button for mobile */}
       <Center width={'100%'} display={{md:'none'}}>

@@ -29,6 +29,10 @@ const Navbar = () => {
                 <NavLink data={item} key={item.id} />
               ))}
             </Flex>
+            <Flex display={{base:'none', md:'flex'}} alignItems={'center'} gap={'10px'}>              
+              <h1>login</h1>
+              <h1>sign in</h1>
+            </Flex>
           </Flex>
         </nav>
       </Box>

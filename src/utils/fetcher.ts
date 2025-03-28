@@ -1,4 +1,5 @@
 'use server'
+import qs from 'qs';
 import axios from "axios";
 import { limiter } from "./limiter";
 
@@ -23,6 +24,9 @@ export const fetcher = async (
           params: {
             key: API_KEY,
             ...params
+          },
+          paramsSerializer: (params: any) => {
+            return qs.stringify(params, { arrayFormat: 'repeat' });
           },
           headers: {
             "Content-Type": "application/json",
