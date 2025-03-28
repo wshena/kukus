@@ -4,9 +4,9 @@ import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import AppProvider from "@/components/providers/AppProvider";
-import ProgressBar from "@/components/ProgressBar";
 import { Toaster } from "@/components/ui/toaster";
 import MobileNav from "@/components/offMenu/MobileNav";
+import ProgressBarProvider from "@/components/ProgressBarProvider";
 
 const monaSans = Mona_Sans({
   variable: "--font-mona-sans",
@@ -29,10 +29,11 @@ export default function RootLayout({
         className={`${monaSans.variable} antialiased overflow-x-hidden`}
       >
         <AppProvider>
-          {children}
-          <Toaster />
-          <ProgressBar />
-          <MobileNav />
+          <ProgressBarProvider>
+            {children}
+            <Toaster />
+            <MobileNav />
+          </ProgressBarProvider>
         </AppProvider>
       </body>
     </html>
