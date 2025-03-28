@@ -6,6 +6,14 @@ export const MediumCardHeight: ChakraResponsive = {base:'130px', md:'150px'};
 
 export const H1FontSize: ChakraResponsive = {base:'18px', md:'25px', lg:'32px'};
 
+export const DetailTabs = [
+  {id: 1, label: 'overview'},
+  {id: 2, label: 'achievement'},
+  {id: 3, label: 'screenshots'},
+  {id: 4, label: 'add-ons'},
+  {id: 5, label: 'same series'},
+]
+
 export const CardCarouselSettings = {
   dots: false,
   infinite: true,

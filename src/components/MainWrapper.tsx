@@ -10,7 +10,7 @@ const MainWrapper = ({children}:{children:React.ReactNode}) => {
     <Stack 
       maxW={'1000px'} 
       marginX={'auto'} 
-      paddingY={{base:'80px', md:'80px'}} 
+      paddingY={{base:'80px', md:'90px'}} 
       paddingX={{base:'20px', md:'30px', xl:'0px'}} 
       gap={{base:'30px', md:'45px', lg:'60px'}} 
       height={isMobileMenuClick ? '100vh' : 'fit-content'} 
