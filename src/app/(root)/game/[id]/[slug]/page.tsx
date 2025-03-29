@@ -1,13 +1,15 @@
+import GameCoverImage from '@/components/GameCoverImage';
+import GameDescription from '@/components/GameDescription';
 import { StarRating } from '@/components/StarRating';
 import { getGameDetail } from '@/utils/actions/fetcher.action';
-import { Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import React from 'react'
 
 const page = async ({params}:{params:any}) => {
   const { id } = params;
   const gameDetail = await getGameDetail(id);
 
-  const { name, rating } = gameDetail?.res;
+  const { name, rating, background_image, description } = gameDetail?.res;
 
   return (
     <>
@@ -18,9 +20,15 @@ const page = async ({params}:{params:any}) => {
           <Text fontSize={{base:'.9rem', md:'1rem'}}>{rating}</Text>
         </Flex>
       </Stack>
-      {/* <Flex alignItems={'start'} justifyContent={'space-between'} gap={'50px'}>
-
-      </Flex> */}
+      
+      <Flex alignItems={'start'} justifyContent={'space-between'} flexDir={{base:'column', lg:'row'}} gap={{base:'40px', md:'50px'}}>
+        <Stack width={{base:'100%', lg:'60%'}} border={'1px solid white'} gap={'40px'}>
+          {/* cover image */}
+          <GameCoverImage image={background_image} name={name} />
+          {/* game descriptions */}
+          <GameDescription description={description} />
+        </Stack>
+      </Flex>
     </>
   )
 }
