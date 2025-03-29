@@ -14,14 +14,42 @@ interface SectionAndTitleProps {
   children?: React.ReactNode
 };
 interface GameGenresProps {
-  id: number,
-  name: string,
-  slug: string,
-  games_count: number,
-  image_background: string
+  id: number | null,
+  name: string | null,
+  slug: string | null,
+  games_count: number | null,
+  image_background: string | null
 };
 interface GameTagsProps extends GameGenresProps {
-  language: string,
+  language: string | null,
+};
+interface PublisherProps extends GameGenresProps {};
+interface DeveloperProps extends GameGenresProps {};
+interface GamePlatformProps {
+  platform: {
+    id: number | null,
+    name: string | null,
+    slug: string | null,
+    image: string | null,
+    year_end: string | number | null,
+    year_start: string | number | null,
+    games_count: number | null,
+    image_background: string | null
+  },
+  released_at: string,
+  requirements: {} | null
+};
+interface GameStoresProps {
+  id: number | null,
+  url: string | null,
+  store: {
+    id: number | null,
+    name: string | null,
+    slug: string | null,
+    domain: string,
+    games_count: number | null,
+    image_background: string | null
+  }
 }
 
 type NavLinkProps = {

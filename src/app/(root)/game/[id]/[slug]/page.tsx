@@ -70,7 +70,7 @@ const page = async ({params}:{params:any}) => {
   const { id } = params;
   const gameDetail = await getGameDetail(id);
 
-  const { name, rating, background_image, description, genres, tags, platforms } = gameDetail?.res;
+  const { name, rating, background_image, description, genres, tags, platforms, developers, publishers, released, playtime, stores } = gameDetail?.res;
   const PcPlatform = platforms?.find((item:any) => item.platform.name === 'PC');
   
   return (
@@ -95,6 +95,73 @@ const page = async ({params}:{params:any}) => {
           <GameTags tags={tags} />
           {/* system requirements */}
           <SystemRequirement platform={PcPlatform} name={name} />
+        </Stack>
+
+        <Stack width={{base:'100%', lg:'40%'}} gap={'20px'}>
+          {/* developers */}
+          <Stack paddingBottom={'10px'} borderBottom={'1px solid white'}>
+            <Text>Developers</Text>
+            <Flex alignItems={'center'} gap={'5px'} flexWrap={'wrap'}>
+              {developers?.map((item:DeveloperProps, index:number) => (
+                <React.Fragment key={item.id}>
+                  <Link href={`/publisher/${item.id}/${item.slug}`}>
+                    <Text cursor={'pointer'} fontSize={'1rem'} color={'gray.500'} _hover={{color:'white'}}>
+                      {item.name}
+                    </Text>
+                  </Link>
+                  {index < developers.length && (
+                    <Text color={'gray.500'}>,</Text>
+                  )}
+                </React.Fragment>
+              ))}
+            </Flex>
+          </Stack>
+          {/* publishers */}
+          <Stack paddingBottom={'10px'} borderBottom={'1px solid white'}>
+            <Text>Publisher</Text>
+            <Flex alignItems={'center'} gap={'5px'} flexWrap={'wrap'}>
+              {publishers?.map((item:PublisherProps, index:number) => (
+                <React.Fragment key={item.id}>
+                  <Link href={`/publisher/${item.id}/${item.slug}`}>
+                    <Text cursor={'pointer'} fontSize={'1rem'} color={'gray.500'} _hover={{color:'white'}}>
+                      {item.name}
+                    </Text>
+                  </Link>
+                  {index < publishers.length - 1  && (
+                    <Text color={'gray.500'}>,</Text>
+                  )}
+                </React.Fragment>
+              ))}
+            </Flex>
+          </Stack>
+          {/* relesed date */}
+          <Flex alignItems={'center'} justifyContent={'space-between'} paddingBottom={'10px'} borderBottom={'1px solid white'}>
+            <Text>Released Date</Text>
+            <Text>{released}</Text>
+          </Flex>
+          {/* average playtime */}
+          <Flex alignItems={'center'} justifyContent={'space-between'} paddingBottom={'10px'} borderBottom={'1px solid white'}>
+            <Text>Average Playtime</Text>
+            <Text>{playtime} hours</Text>
+          </Flex>
+          {/* where to buy */}
+          <Stack paddingBottom={'10px'} borderBottom={'1px solid white'}>
+            <Text>Where to buy</Text>
+            <Flex alignItems={'center'} gap={'5px'} flexWrap={'wrap'}>
+              {stores?.map((item:GameStoresProps, index:number) => (
+                <React.Fragment key={item.id}>
+                  <Link href={`https://${item.store.domain}`}>
+                    <Text cursor={'pointer'} fontSize={'1rem'} color={'gray.500'} _hover={{color:'white'}}>
+                      {item.store.name}
+                    </Text>
+                  </Link>
+                  {index < stores.length - 1  && (
+                    <Text color={'gray.500'}>,</Text>
+                  )}
+                </React.Fragment>
+              ))}
+            </Flex>
+          </Stack>
         </Stack>
       </Flex>
     </>
