@@ -1,4 +1,4 @@
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/wrapper/MainWrapper'
 import React from 'react'
 
 const page = () => {

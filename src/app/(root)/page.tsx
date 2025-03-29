@@ -1,5 +1,5 @@
 import React from 'react'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/wrapper/MainWrapper'
 import { getGameList } from '@/utils/actions/fetcher.action'
 import CardCarousel from '@/components/carousels/CardCarousel'
 import { getThreeRandomItems } from '@/utils/actions/general.action'

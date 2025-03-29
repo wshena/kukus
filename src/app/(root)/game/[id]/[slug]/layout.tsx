@@ -1,6 +1,6 @@
 'use client'
 import GameDetailTabs from '@/components/GameDetailTabs'
-import MainWrapper from '@/components/MainWrapper'
+import MainWrapper from '@/components/wrapper/MainWrapper'
 import GameDescription from '@/components/offMenu/GameDescription'
 import { useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/redux/store'

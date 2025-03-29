@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import OnViewAnimationWrapper from '../OnViewAnimationWrapper';
+import OnViewAnimationWrapper from '../wrapper/OnViewAnimationWrapper';
 import { Box, Text, VStack } from '@chakra-ui/react';
 import { CardHeight, CardWidth } from '@/constants';
 import Image from 'next/image';

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, VStack } from '@chakra-ui/react'
 import { CardHeight, CardWidth, MediumCardHeight, MediumCardWidth } from '@/constants'
-import OnViewAnimationWrapper from '../OnViewAnimationWrapper'
+import OnViewAnimationWrapper from '../wrapper/OnViewAnimationWrapper'
 
 export const CardSkeleton = () => {
   return (

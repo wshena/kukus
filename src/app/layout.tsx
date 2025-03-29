@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import AppProvider from "@/components/providers/AppProvider";
 import { Toaster } from "@/components/ui/toaster";
 import MobileNav from "@/components/offMenu/MobileNav";
-import ProgressBarProvider from "@/components/ProgressBarProvider";
+import ProgressBarProvider from "@/components/providers/ProgressBarProvider";
 
 const monaSans = Mona_Sans({
   variable: "--font-mona-sans",
