@@ -12,6 +12,16 @@ interface SectionAndTitleProps {
   title: string,
   url?: string,
   children?: React.ReactNode
+};
+interface GameGenresProps {
+  id: number,
+  name: string,
+  slug: string,
+  games_count: number,
+  image_background: string
+};
+interface GameTagsProps extends GameGenresProps {
+  language: string,
 }
 
 type NavLinkProps = {

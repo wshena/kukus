@@ -4,6 +4,7 @@ import MainWrapper from '@/components/MainWrapper'
 import GameDescription from '@/components/offMenu/GameDescription'
 import { useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/redux/store'
+import { Box } from '@chakra-ui/react'
 import React from 'react'
 
 const GameDetailLayout = ({params, children}:{params:any, children:React.ReactNode}) => {
@@ -15,10 +16,12 @@ const GameDetailLayout = ({params, children}:{params:any, children:React.ReactNo
 
   return (
     <>
-      <MainWrapper>
-        <GameDetailTabs id={id} slug={slug} />
-        {children}
-      </MainWrapper>
+      <GameDetailTabs id={id} slug={slug} />
+      <Box marginTop={'70px'}>
+        <MainWrapper>
+          {children}
+        </MainWrapper>
+      </Box>
 
       {(isShowOffScreenDiv?.status === true && isShowOffScreenDiv?.type === 'game-description') && (
         <GameDescription description={description} />

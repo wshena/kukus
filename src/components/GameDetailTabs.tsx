@@ -1,6 +1,6 @@
 'use client'
 import { DetailTabs } from '@/constants'
-import { Box, Flex, Text } from '@chakra-ui/react'
+import { Box, Center, Flex, Text } from '@chakra-ui/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
@@ -10,8 +10,8 @@ const GameDetailTabs = ({id, slug}:{id:number, slug:string}) => {
   const baseUrl = `/game/${id}/${slug}`;
 
   return (
-    <Box width={'100%'} overflowX={'auto'}>
-      <Flex alignItems={'center'} width={{base:'490px', md:'100%'}} gap={{base:'15px', md:'20px'}}>
+    <Box position={'fixed'} top={'60px'} zIndex={50} paddingY={'1rem'} paddingX={{base:'20px', md:'0px'}} bgColor={'black'} width={'100%'} overflowX={{base:'auto', md:'hidden'}} display="flex" justifyContent={{md: 'center'}}>
+      <Flex alignItems={'center'} width={{base:'max-content', md:'fit-content'}} gap={{base:'15px', md:'20px'}} minWidth={{base: 'max-content'}}>
         {DetailTabs?.map((item:any) => {
           const generateUrl = () => {
             switch (item.label) {
@@ -40,6 +40,7 @@ const GameDetailTabs = ({id, slug}:{id:number, slug:string}) => {
                 color={itemUrl === currentPath ? 'white' : 'gray.500'} 
                 _hover={{color:'white'}} 
                 textTransform={'capitalize'}
+                whiteSpace="nowrap"
               >
                 {item.label}
               </Text>

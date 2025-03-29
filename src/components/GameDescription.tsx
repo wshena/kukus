@@ -18,7 +18,7 @@ const GameDescription = ({description}:{description:string}) => {
   }
   return (
     <Stack alignItems={'start'} gap={'10px'}>
-      <Heading as='h1' fontSize={'1.5rem'} fontWeight={'bold'}>About</Heading>
+      <Heading as='h2' fontSize={'1.5rem'} fontWeight={'bold'}>About</Heading>
       <Text
         fontSize="1rem"
         color="gray.200"

@@ -8,6 +8,7 @@ const MainWrapper = ({children}:{children:React.ReactNode}) => {
 
   return (
     <Stack 
+      position={'relative'}
       maxW={'1000px'} 
       marginX={'auto'} 
       paddingY={{base:'80px', md:'90px'}} 
