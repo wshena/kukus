@@ -6,6 +6,7 @@ import { Box, Text, VStack } from '@chakra-ui/react';
 import { CardHeight, CardWidth } from '@/constants';
 import Image from 'next/image';
 import { CardSkeleton } from '../skeletons/Skeletons';
+import { truncateText } from '@/utils/actions/general.action';
 
 const GameCard = ({data}:{data:any}) => {
   const { id, slug, name, background_image } = data;
@@ -41,7 +42,7 @@ const GameCard = ({data}:{data:any}) => {
               borderRadius: '10px'
             }} onError={handleImageError} loading='lazy' />
           </Box>
-          <Text fontSize={{base:'.9rem', md:'1rem'}}>{name}</Text>
+          <Text fontSize={{base:'.9rem', md:'1rem'}}>{truncateText(name, 20)}</Text>
         </VStack>
       </OnViewAnimationWrapper>
     </Link>

@@ -1,7 +1,7 @@
 export const CardWidth: ChakraResponsive = {base:'100px', md:'150px'};
 export const CardHeight: ChakraResponsive = {base:'150px', md:'200px'};
 
-export const MediumCardWidth: ChakraResponsive = {base:'240px', md:'320px'};
+export const MediumCardWidth: ChakraResponsive = {base:'300px', md:'320px', lg:'290px', xl:'320px'};
 export const MediumCardHeight: ChakraResponsive = {base:'130px', md:'150px'};
 
 export const H1FontSize: ChakraResponsive = {base:'18px', md:'25px', lg:'32px'};
@@ -27,8 +27,8 @@ export const CardCarouselSettings = {
       // Layar di bawah 480px
       breakpoint: 480,
       settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
+        slidesToShow: 3,
+        slidesToScroll: 3,
       },
     },
     {

@@ -11,7 +11,8 @@ const MainWrapper = ({children}:{children:React.ReactNode}) => {
       position={'relative'}
       maxW={'1000px'} 
       marginX={'auto'} 
-      paddingY={{base:'80px', md:'90px'}} 
+      paddingTop={{base:'130px', md:'140px'}} 
+      paddingBottom={'50px'}
       paddingX={{base:'20px', md:'30px', xl:'0px'}} 
       gap={{base:'30px', md:'45px', lg:'60px'}} 
       height={isMobileMenuClick ? '100vh' : 'fit-content'} 

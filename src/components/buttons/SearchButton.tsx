@@ -1,9 +1,9 @@
 import { SearchIcon } from '@/icons/Icon'
 import React from 'react'
 
-const SearchButton = () => {
+const SearchButton = ({type}:{type:"submit" | "reset" | "button" | undefined}) => {
   return (
-    <button className='cursor-pointer' aria-label='search some games' role='search'>
+    <button type={type} className='cursor-pointer' aria-label='search some games' role='search'>
       <SearchIcon size={25} color='white' />
     </button>
   )
