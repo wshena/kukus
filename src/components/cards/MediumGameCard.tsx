@@ -18,11 +18,12 @@ const MediumGameCard = ({data}:{data:any}) => {
   const [reloadCount, setReloadCount] = useState(0)  
 
   const handleImageError = () => {
-    // 3 kali reload
     if (reloadCount < 3) {
-      setReloadCount(reloadCount + 1)
+      setReloadCount(prev => prev + 1)
       // Tambahkan query param unik untuk menghindari cache
       setImageSrc(background_image + `?reload=${new Date().getTime()}`)
+    } else {
+      setImageSrc(fallbackImage)
     }
   }
 
