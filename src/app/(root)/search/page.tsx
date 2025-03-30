@@ -63,6 +63,14 @@ const SearchPage = () => {
       isMounted = false;
     };
   }, [q, page]);
+
+  if (!q || q === '') {
+    return (
+      <Center width={'100%'}>
+        <Text fontSize={{base:'1.5rem', md:'2rem'}}>Provide input to the search from above</Text>
+      </Center>
+    )
+  }
   
   return (
     <MainWrapper>
