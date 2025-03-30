@@ -12,7 +12,7 @@ import CustomPagination from '@/components/Pagination'
 const SearchPage = () => {
   const searchParams = useSearchParams()
   const q = searchParams.get('q') || '';
-  const page = searchParams.get('page') || '';
+  const page = searchParams.get('page') || 1;
   
   const [gameList, setGameList] = useState<any>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -66,9 +66,11 @@ const SearchPage = () => {
 
   if (!q || q === '') {
     return (
-      <Center width={'100%'}>
-        <Text fontSize={{base:'1.5rem', md:'2rem'}}>Provide input to the search from above</Text>
-      </Center>
+      <MainWrapper>
+        <Center width={'100%'}>
+          <Text fontSize={{base:'1.5rem', md:'2rem'}}>Provide input to the search from above</Text>
+        </Center>
+      </MainWrapper>
     )
   }
   
@@ -115,7 +117,7 @@ const SearchPage = () => {
             )}
           </Grid>
         </Center>
-        {gameList.res?.next && (
+        {gameList?.res?.next && (
           <Center width={'100%'}>
             <CustomPagination count={gameList.res?.count} pageSize={gameList.res?.results?.length} defaultPage={1} />
           </Center>

@@ -140,10 +140,12 @@ const page = async ({params}:{params:any}) => {
             <Text>{released}</Text>
           </Flex>
           {/* average playtime */}
-          <Flex alignItems={'center'} justifyContent={'space-between'} paddingBottom={'10px'} borderBottom={'1px solid white'}>
-            <Text>Average Playtime</Text>
-            <Text>{playtime} hours</Text>
-          </Flex>
+          {playtime !== 0 && (
+            <Flex alignItems={'center'} justifyContent={'space-between'} paddingBottom={'10px'} borderBottom={'1px solid white'}>
+              <Text>Average Playtime</Text>
+              <Text>{playtime} hours</Text>
+            </Flex>
+          )}
           {/* where to buy */}
           <Stack paddingBottom={'10px'} borderBottom={'1px solid white'}>
             <Text>Where to buy</Text>
