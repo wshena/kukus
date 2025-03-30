@@ -5,6 +5,7 @@ import OnViewAnimationWrapper from '../wrapper/OnViewAnimationWrapper';
 import { Box, Text, VStack } from '@chakra-ui/react';
 import { CardHeight, CardWidth } from '@/constants';
 import Image from 'next/image';
+import { CardSkeleton } from '../skeletons/Skeletons';
 
 const GameCard = ({data}:{data:any}) => {
   const { id, slug, name, background_image } = data;
@@ -23,6 +24,13 @@ const GameCard = ({data}:{data:any}) => {
       setImageSrc(background_image + `?reload=${new Date().getTime()}`)
     }
   }
+
+  if (!data) {
+    return (
+      <CardSkeleton />
+    )
+  }
+  
   return (
     <Link href={`/game/${id}/${slug}`} className='w-fit cursor-pointer'>
       <OnViewAnimationWrapper>
@@ -31,7 +39,7 @@ const GameCard = ({data}:{data:any}) => {
             <Image src={imageSrc} alt={name} fill style={{
               objectFit: 'cover',
               borderRadius: '10px'
-            }} onError={handleImageError} />
+            }} onError={handleImageError} loading='lazy' />
           </Box>
           <Text fontSize={{base:'.9rem', md:'1rem'}}>{name}</Text>
         </VStack>

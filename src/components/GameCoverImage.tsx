@@ -21,7 +21,7 @@ const GameCoverImage = ({image, name}:{image:string, name:string}) => {
 
   return (
     <Box width={'100%'} position={'relative'} height={{base:'250px', md:'300px'}}>
-      <Image src={imageSrc} onError={handleImageError} alt={name} fill objectFit='cover' className='rounded-[10px] rounded-[10px]' />
+      <Image src={imageSrc} onError={handleImageError} alt={name} fill objectFit='cover'  loading={'lazy'} className='rounded-[10px] rounded-[10px]' />
     </Box>
   )
 }

@@ -1,6 +1,11 @@
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 import { RiMenu3Line, RiCloseLargeLine } from "react-icons/ri";
 import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
+import { PiMagnifyingGlassFill } from "react-icons/pi";
+
+export const SearchIcon = ({size, color, classname}:IconProps) => {
+  return <PiMagnifyingGlassFill size={size} color={color} className={classname} />
+}
 
 export const HollowStarIcon = ({size, color, classname}:IconProps) => {
   return <FaRegStar size={size} color={color} className={classname} />
