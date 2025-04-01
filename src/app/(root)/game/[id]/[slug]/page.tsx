@@ -1,9 +1,14 @@
+'use client'
+
+import AddToWishlistButton from '@/components/buttons/AddToWishlistButton';
 import GameCoverImage from '@/components/GameCoverImage';
 import GameDescription from '@/components/GameDescription';
 import { StarRating } from '@/components/StarRating';
+import { useGameDetail } from '@/hooks/useSWRCaching';
 import { getGameDetail } from '@/utils/actions/fetcher.action';
-import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Center, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import React from 'react'
 
 const GameTags = ({tags}:{tags:GameTagsProps[]}) => {
@@ -66,12 +71,19 @@ const SystemRequirement = ({platform, name}:{platform:any, name:string}) => {
   )
 }
 
-const page = async ({params}:{params:any}) => {
-  const { id } = params;
-  const gameDetail = await getGameDetail(id);
+const page = () => {
+  const params = useParams();
+  const id = params?.id;
 
-  const { name, rating, background_image, description, genres, tags, platforms, developers, publishers, released, playtime, stores } = gameDetail?.res;
+  const { data, error, isLoading } = useGameDetail(id ? Number(id) : null);
+  const gameData = data ?? {};
+
+  const { name, rating, background_image, description, genres, tags, platforms, developers, publishers, released, playtime, stores } = gameData;
   const PcPlatform = platforms?.find((item:any) => item.platform.name === 'PC');
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading game detail.</div>;
+  if (!data) return <div>Game not found.</div>;
   
   return (
     <>
@@ -109,7 +121,7 @@ const page = async ({params}:{params:any}) => {
                       {item.name}
                     </Text>
                   </Link>
-                  {index < developers.length && (
+                  {index < developers.length - 1  && (
                     <Text color={'gray.500'}>,</Text>
                   )}
                 </React.Fragment>
@@ -164,6 +176,8 @@ const page = async ({params}:{params:any}) => {
               ))}
             </Flex>
           </Stack>
+          
+          <AddToWishlistButton />
         </Stack>
       </Flex>
     </>
