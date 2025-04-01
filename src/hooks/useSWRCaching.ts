@@ -59,3 +59,31 @@ export const useGameScreenShots = (id: number | null) => {
 
   return { data, error, isLoading };
 };
+
+export const useGameAdditions = (id: number | null) => {
+  // Jika id null, jangan lakukan fetching
+  const key = id ? `/games/${id}/additions` : null;
+
+  const { data, error, isLoading } = useSWR(key, (endpoint) =>
+    modularFetcher(endpoint)
+  , {
+    refreshInterval: 60000,
+    revalidateOnMount: true
+  });
+
+  return { data, error, isLoading };
+};
+
+export const useGameAchievements = (id: number | null) => {
+  // Jika id null, jangan lakukan fetching
+  const key = id ? `/games/${id}/achievements` : null;
+
+  const { data, error, isLoading } = useSWR(key, (endpoint) =>
+    modularFetcher(endpoint)
+  , {
+    refreshInterval: 60000,
+    revalidateOnMount: true
+  });
+
+  return { data, error, isLoading };
+};
