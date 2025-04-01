@@ -1,14 +1,19 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'motion/react';
 
 const MotionBox = motion.div;
 
-const OnViewAnimationWrapper = ({children}:{children:React.ReactNode}) => {
+const OnViewAnimationWrapper = ({ children }: { children: React.ReactNode }) => {
+  const [hasEntered, setHasEntered] = useState(false);
+
   return (
     <MotionBox
-      initial={{ opacity: 0, y: 50 }}
+      // Jika belum pernah memasuki view, terapkan initial state
+      initial={!hasEntered ? { opacity: 0, y: 50 } : false}
       whileInView={{ opacity: 1, y: 0 }}
+      // Callback ketika komponen memasuki viewport
+      onViewportEnter={() => setHasEntered(true)}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
       className='w-fit'
@@ -18,4 +23,4 @@ const OnViewAnimationWrapper = ({children}:{children:React.ReactNode}) => {
   )
 }
 
-export default OnViewAnimationWrapper
+export default OnViewAnimationWrapper;

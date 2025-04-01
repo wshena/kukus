@@ -119,7 +119,7 @@ const SearchPage = () => {
         </Center>
         {gameList?.res?.next && (
           <Center width={'100%'}>
-            <CustomPagination count={gameList.res?.count} pageSize={gameList.res?.results?.length} defaultPage={1} />
+            <CustomPagination count={gameList?.res?.count} pageSize={gameList?.res?.results?.length} defaultPage={1} />
           </Center>
         )}
       </Stack>
