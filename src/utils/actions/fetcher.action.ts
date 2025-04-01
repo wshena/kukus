@@ -7,3 +7,7 @@ export const getGameList = async (params?: FetcherParams) => {
 export const getGameDetail = async (id:number) => {
   return fetcher(`/games/${id}`, 'get')
 }
+
+export const getGameOnTheSameSeries = async (id:number) => {
+  return fetcher(`/games/${id}/game-series`, 'get')
+}

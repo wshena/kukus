@@ -3,6 +3,7 @@
 import AddToWishlistButton from '@/components/buttons/AddToWishlistButton';
 import GameCoverImage from '@/components/GameCoverImage';
 import GameDescription from '@/components/GameDescription';
+import { GameCoverSkeleton, GameDescriptionSkeleton, GameInfoSkeleton, GameTitleSkeleton } from '@/components/skeletons/Skeletons';
 import { StarRating } from '@/components/StarRating';
 import { useGameDetail } from '@/hooks/useSWRCaching';
 import { getGameDetail } from '@/utils/actions/fetcher.action';
@@ -81,9 +82,31 @@ const page = () => {
   const { name, rating, background_image, description, genres, tags, platforms, developers, publishers, released, playtime, stores } = gameData;
   const PcPlatform = platforms?.find((item:any) => item.platform.name === 'PC');
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading game detail.</div>;
-  if (!data) return <div>Game not found.</div>;
+  if (isLoading || !data) return (
+    <Stack gap={'20px'} width={'100%'}>
+      <GameTitleSkeleton />
+      <Flex alignItems={'start'} justifyContent={'space-between'} flexDir={{base:'column', lg:'row'}} gap={{base:'40px', md:'50px'}}>
+        <Stack width={{base:'100%', lg:'60%'}} gap={'40px'}>
+          <GameTitleSkeleton />
+          <GameCoverSkeleton />
+          <GameDescriptionSkeleton />
+        </Stack>
+        <GameInfoSkeleton />
+      </Flex>
+    </Stack>
+  );
+
+  if (error) return (
+    <Center width={'100%'}>
+      <div>Error loading game detail.</div>
+    </Center>
+  );
+
+  if (!data) return (
+    <Center width={'100%'}>
+      <div>Game not found.</div>
+    </Center>
+  );
   
   return (
     <>

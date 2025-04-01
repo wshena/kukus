@@ -17,11 +17,9 @@ const GameDetailLayout = ({params, children}:{params:any, children:React.ReactNo
   return (
     <>
       <GameDetailTabs id={id} slug={slug} />
-      <Box marginTop={'70px'}>
-        <MainWrapper>
-          {children}
-        </MainWrapper>
-      </Box>
+      <MainWrapper>
+        {children}
+      </MainWrapper>
 
       {(isShowOffScreenDiv?.status === true && isShowOffScreenDiv?.type === 'game-description') && (
         <GameDescription description={description} />

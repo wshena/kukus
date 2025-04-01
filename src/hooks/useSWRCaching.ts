@@ -30,3 +30,16 @@ export const useGameDetail = (id: number | null) => {
 
   return { data, error, isLoading };
 };
+
+export const useGameOnTheSameSeries = (id: number | null) => {
+  // Jika id null, jangan lakukan fetching
+  const key = id ? `/games/${id}/game-series` : null;
+
+  const { data, error, isLoading } = useSWR(key, (endpoint) =>
+    modularFetcher(endpoint)
+  , {
+    refreshInterval: 60000,
+  });
+
+  return { data, error, isLoading };
+};
