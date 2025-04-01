@@ -13,7 +13,7 @@ const MainWrapper = ({children}:{children:React.ReactNode}) => {
       position={'relative'}
       maxW={'1000px'} 
       marginX={'auto'} 
-      paddingTop={{base:'140px', md:'140px'}} 
+      paddingTop={{base:'140px', md:'145px'}} 
       paddingBottom={'50px'}
       paddingX={{base:'20px', md:'30px', xl:'0px'}} 
       gap={{base:'30px', md:'45px', lg:'60px'}} 

@@ -15,7 +15,7 @@ const page = () => {
 
   if (error) return (
     <Center width={'100%'}>
-      <div>Error loading game detail.</div>
+      <div>Error loading game list.</div>
     </Center>
   );
   

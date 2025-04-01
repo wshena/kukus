@@ -11,3 +11,7 @@ export const getGameDetail = async (id:number) => {
 export const getGameOnTheSameSeries = async (id:number) => {
   return fetcher(`/games/${id}/game-series`, 'get')
 }
+
+export const getGameScreenShots = async (id:number) => {
+  return fetcher(`/games/${id}/screenshots`, 'get')
+}

@@ -11,7 +11,7 @@ export const useGameList = (params?: FetcherParams) => {
   const { data, error, isLoading } = useSWR(
     key,
     (key:any) => Array.isArray(key) ? modularFetcher(key[0], key[1]) : modularFetcher(key),
-    { refreshInterval: 60000 }
+    { refreshInterval: 60000, revalidateOnMount: true }
   );
 
   return { data, error, isLoading };
@@ -26,6 +26,7 @@ export const useGameDetail = (id: number | null) => {
     modularFetcher(endpoint)
   , {
     refreshInterval: 60000,
+    revalidateOnMount: true
   });
 
   return { data, error, isLoading };
@@ -39,6 +40,21 @@ export const useGameOnTheSameSeries = (id: number | null) => {
     modularFetcher(endpoint)
   , {
     refreshInterval: 60000,
+    revalidateOnMount: true
+  });
+
+  return { data, error, isLoading };
+};
+
+export const useGameScreenShots = (id: number | null) => {
+  // Jika id null, jangan lakukan fetching
+  const key = id ? `/games/${id}/screenshots` : null;
+
+  const { data, error, isLoading } = useSWR(key, (endpoint) =>
+    modularFetcher(endpoint)
+  , {
+    refreshInterval: 60000,
+    revalidateOnMount: true
   });
 
   return { data, error, isLoading };

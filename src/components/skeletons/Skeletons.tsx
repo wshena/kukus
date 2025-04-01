@@ -69,3 +69,11 @@ export const GameInfoSkeleton = () => {
     </OnViewAnimationWrapper>
   )
 }
+
+export const GameScreenshotsSkeleton = () => {
+  return (
+    <OnViewAnimationWrapper>
+      <Box width={{base:'200px', md:'300px'}} height={{base:'180px', md:'200px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+    </OnViewAnimationWrapper>
+  )
+}
