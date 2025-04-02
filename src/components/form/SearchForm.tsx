@@ -1,8 +1,8 @@
 'use client'
 import { Center, Flex } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import SearchButton from '../buttons/SearchButton'
 import { useRouter } from 'next/navigation'
+import { SearchIcon } from '@/icons/Icon'
 
 const SearchForm = () => {
   const router = useRouter();
@@ -38,7 +38,9 @@ const SearchForm = () => {
             aria-label="Search games"
             autoComplete='off'
           />
-          <SearchButton type="submit" aria-label="Submit search" />
+          <button type={'submit'} className='cursor-pointer' aria-label='search some games' role='search'>
+            <SearchIcon size={25} color='white' />
+          </button>
         </Flex>
       </form>
     </Center>

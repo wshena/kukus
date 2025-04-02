@@ -87,11 +87,12 @@ const page = () => {
       <GameTitleSkeleton />
       <Flex alignItems={'start'} justifyContent={'space-between'} flexDir={{base:'column', lg:'row'}} gap={{base:'40px', md:'50px'}}>
         <Stack width={{base:'100%', lg:'60%'}} gap={'40px'}>
-          <GameTitleSkeleton />
           <GameCoverSkeleton />
           <GameDescriptionSkeleton />
         </Stack>
-        <GameInfoSkeleton />
+        <Box width={{base:'100%', md:'40%'}}>
+          <GameInfoSkeleton />
+        </Box>
       </Flex>
     </Stack>
   );

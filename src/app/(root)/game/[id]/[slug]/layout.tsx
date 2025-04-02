@@ -4,7 +4,6 @@ import MainWrapper from '@/components/wrapper/MainWrapper'
 import GameDescription from '@/components/offMenu/GameDescription'
 import { useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/redux/store'
-import { Box } from '@chakra-ui/react'
 import React from 'react'
 
 const GameDetailLayout = ({params, children}:{params:any, children:React.ReactNode}) => {

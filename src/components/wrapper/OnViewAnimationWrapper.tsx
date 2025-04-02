@@ -16,7 +16,6 @@ const OnViewAnimationWrapper = ({ children }: { children: React.ReactNode }) => 
       onViewportEnter={() => setHasEntered(true)}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className='w-fit'
     >
       {children}
     </MotionBox>

@@ -6,7 +6,7 @@ import MobileNavMenuButton from './buttons/MobileNavMenuButton'
 import Logo from './Logo'
 import SigninButton from './buttons/SigninButton'
 import LoginButton from './buttons/LoginButton'
-import SearchForm from './form/SearchForm'
+import SearchButton from './buttons/SearchButton'
 
 const NavLink = ({data}:{data:NavLinkProps}) => {
   return (
@@ -36,12 +36,12 @@ const Navbar = () => {
               ))}
             </Flex>
             <Flex display={{base:'none', md:'flex'}} alignItems={'center'} gap={'10px'}>
+              <SearchButton />
               <LoginButton />
               <SigninButton />
             </Flex>
           </Flex>
         </nav>
-        <SearchForm />
       </Box>
     </Center>
   )

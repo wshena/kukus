@@ -1,5 +1,5 @@
 export function getThreeRandomItems<T>(items: T[]): T[] {
-  if (items.length <= 3) return [...items];
+  if (items?.length <= 3) return [...items];
 
   // Salin array agar tidak mengubah array asli
   const shuffled = [...items];

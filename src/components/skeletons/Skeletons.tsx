@@ -30,9 +30,7 @@ export const MediumCardSkeleton = () => {
 export const GameTitleSkeleton = () => {
   return (
     <OnViewAnimationWrapper>
-      <VStack width={'100%'} gap={{base:'10px', md:'15px'}} alignItems={'start'}>
-        <Box width={'100%'} height={{base:'10px', md:'30%'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
-      </VStack>
+      <Box width={'100%'} height={{base:'10px', md:'30px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
     </OnViewAnimationWrapper>
   )
 }
@@ -49,9 +47,9 @@ export const GameDescriptionSkeleton = () => {
   return (
     <OnViewAnimationWrapper>
       <VStack width={'100%'} gap={{base:'10px', md:'15px'}} alignItems={'start'}>
-        <Box width={'100%'} height={{base:'10px', md:'30%'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
-        <Box width={'100%'} height={{base:'10px', md:'30%'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
-        <Box width={'100%'} height={{base:'10px', md:'30%'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+        <Box width={'100%'} height={{base:'10px', md:'30px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+        <Box width={'100%'} height={{base:'10px', md:'30px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+        <Box width={'100%'} height={{base:'10px', md:'30px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
       </VStack>
     </OnViewAnimationWrapper>
   )
@@ -60,11 +58,11 @@ export const GameDescriptionSkeleton = () => {
 export const GameInfoSkeleton = () => {
   return (
     <OnViewAnimationWrapper>
-      <VStack width={{base:'100%', lg:'40%'}} gap={{base:'10px', md:'15px'}} alignItems={'start'}>
-        <Box width={'100%'} height={{base:'10px', md:'30%'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
-        <Box width={'100%'} height={{base:'10px', md:'30%'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
-        <Box width={'100%'} height={{base:'10px', md:'30%'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
-        <Box width={'100%'} height={{base:'10px', md:'30%'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+      <VStack width={'100%'} gap={{base:'10px', md:'15px'}} alignItems={'start'}>
+        <Box width={'100%'} height={{base:'10px', md:'30px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+        <Box width={'100%'} height={{base:'10px', md:'30px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+        <Box width={'100%'} height={{base:'10px', md:'30px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+        <Box width={'100%'} height={{base:'10px', md:'30px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
       </VStack>
     </OnViewAnimationWrapper>
   )
