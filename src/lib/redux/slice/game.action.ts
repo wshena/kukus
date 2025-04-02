@@ -2,12 +2,20 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface GameState {
   description: string,
-  name: string
+  name: string,
+  gameScreenshots: GameScreenshotProps;
 }
 
 const initialState: GameState = {
   description: '',
-  name: ''
+  name: '',
+  gameScreenshots: {
+    id: 0,
+    image: '',
+    width: 0,
+    height: 0,
+    is_deleted: false
+  }
 };
 
 const gameSlice = createSlice({
@@ -19,12 +27,16 @@ const gameSlice = createSlice({
     },
     setGameName: (state, action:PayloadAction<string>) => {
       state.name = action.payload;
-    }
+    },
+    setGameScreenshots: (state, action:PayloadAction<GameScreenshotProps>) => {
+      state.gameScreenshots = action.payload;
+    },
   },
 });
 
 export const {
   setGameDescription,
-  setGameName
+  setGameName,
+  setGameScreenshots
 } = gameSlice.actions;
 export default gameSlice.reducer

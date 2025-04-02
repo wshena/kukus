@@ -1,17 +1,9 @@
-'use client'
-import GameDetailTabs from '@/components/GameDetailTabs'
-import MainWrapper from '@/components/wrapper/MainWrapper'
-import GameDescription from '@/components/offMenu/GameDescription'
-import { useAppSelector } from '@/lib/hooks'
-import { RootState } from '@/lib/redux/store'
 import React from 'react'
+import MainWrapper from '@/components/wrapper/MainWrapper'
+import GameDetailTabs from '@/components/GameDetailTabs';
 
 const GameDetailLayout = ({params, children}:{params:any, children:React.ReactNode}) => {
-  const resolvedParams:any = React.use(params);
-  const { id, slug } = resolvedParams;
-
-  const { isShowOffScreenDiv } = useAppSelector((state:RootState) => state.utility);
-  const { description } = useAppSelector((state:RootState) => state.game);
+  const { id, slug } = params;
 
   return (
     <>
@@ -19,10 +11,6 @@ const GameDetailLayout = ({params, children}:{params:any, children:React.ReactNo
       <MainWrapper>
         {children}
       </MainWrapper>
-
-      {(isShowOffScreenDiv?.status === true && isShowOffScreenDiv?.type === 'game-description') && (
-        <GameDescription description={description} />
-      )}
     </>
   )
 }

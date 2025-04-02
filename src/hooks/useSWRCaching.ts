@@ -3,7 +3,7 @@ import { modularFetcher, FetcherParams } from "@/utils/swrFetcher";
 import useSWR from "swr";
 
 // Hook untuk mendapatkan daftar game, dengan parameter opsional
-export const useGameList = (params?: FetcherParams) => {
+export const useGameList = (params?: FetcherParams, fallbackData?:any) => {
   // Gunakan array sebagai key agar SWR dapat mendeteksi perubahan params
   const key = params ? ["/games", params] as const : "/games";
 
@@ -11,14 +11,14 @@ export const useGameList = (params?: FetcherParams) => {
   const { data, error, isLoading } = useSWR(
     key,
     (key:any) => Array.isArray(key) ? modularFetcher(key[0], key[1]) : modularFetcher(key),
-    { refreshInterval: 60000, revalidateOnMount: true }
+    { refreshInterval: 60000, revalidateOnMount: true, fallbackData }
   );
 
   return { data, error, isLoading };
 };
 
 // Hook untuk mendapatkan detail game berdasarkan id
-export const useGameDetail = (id: number | null) => {
+export const useGameDetail = (id: number | null, fallbackData?:any) => {
   // Jika id null, jangan lakukan fetching
   const key = id ? `/games/${id}` : null;
 
@@ -26,13 +26,14 @@ export const useGameDetail = (id: number | null) => {
     modularFetcher(endpoint)
   , {
     refreshInterval: 60000,
-    revalidateOnMount: true
+    revalidateOnMount: true,
+    fallbackData
   });
 
   return { data, error, isLoading };
 };
 
-export const useGameOnTheSameSeries = (id: number | null) => {
+export const useGameOnTheSameSeries = (id: number | null, fallbackData?:any) => {
   // Jika id null, jangan lakukan fetching
   const key = id ? `/games/${id}/game-series` : null;
 
@@ -40,13 +41,14 @@ export const useGameOnTheSameSeries = (id: number | null) => {
     modularFetcher(endpoint)
   , {
     refreshInterval: 60000,
-    revalidateOnMount: true
+    revalidateOnMount: true,
+    fallbackData
   });
 
   return { data, error, isLoading };
 };
 
-export const useGameScreenShots = (id: number | null) => {
+export const useGameScreenShots = (id: number | null, fallbackData?:any) => {
   // Jika id null, jangan lakukan fetching
   const key = id ? `/games/${id}/screenshots` : null;
 
@@ -54,13 +56,14 @@ export const useGameScreenShots = (id: number | null) => {
     modularFetcher(endpoint)
   , {
     refreshInterval: 60000,
-    revalidateOnMount: true
+    revalidateOnMount: true,
+    fallbackData
   });
 
   return { data, error, isLoading };
 };
 
-export const useGameAdditions = (id: number | null) => {
+export const useGameAdditions = (id: number | null, fallbackData?:any) => {
   // Jika id null, jangan lakukan fetching
   const key = id ? `/games/${id}/additions` : null;
 
@@ -68,13 +71,14 @@ export const useGameAdditions = (id: number | null) => {
     modularFetcher(endpoint)
   , {
     refreshInterval: 60000,
-    revalidateOnMount: true
+    revalidateOnMount: true,
+    fallbackData
   });
 
   return { data, error, isLoading };
 };
 
-export const useGameAchievements = (id: number | null) => {
+export const useGameAchievements = (id: number | null, fallbackData?:any) => {
   // Jika id null, jangan lakukan fetching
   const key = id ? `/games/${id}/achievements` : null;
 
@@ -82,7 +86,8 @@ export const useGameAchievements = (id: number | null) => {
     modularFetcher(endpoint)
   , {
     refreshInterval: 60000,
-    revalidateOnMount: true
+    revalidateOnMount: true,
+    fallbackData
   });
 
   return { data, error, isLoading };

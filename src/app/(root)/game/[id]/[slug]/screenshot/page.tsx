@@ -1,52 +1,25 @@
-'use client'
-
-import GameScreenshot from '@/components/GameScreenshot';
-import { GameScreenshotsSkeleton } from '@/components/skeletons/Skeletons';
-import { useGameScreenShots } from '@/hooks/useSWRCaching';
-import { Center, Flex, Heading } from '@chakra-ui/react'
-import { useParams } from 'next/navigation';
 import React from 'react'
+import { getGameDetail, getGameScreenShots } from '@/utils/actions/fetcher.action';
+import GameScreenshotDisplay from './GameScreenshot';
 
-const page = () => {
-  const params = useParams();
-  const id = params?.id;  
-
-  const { data, error, isLoading } = useGameScreenShots(id ? Number(id) : null);
+export async function generateMetadata({ params }: { params: any }) {
+  const { id } = params;
+  // Lakukan fetch data game detail untuk mendapatkan informasi seperti nama game
+  const gameDetail = await getGameDetail(id);
+  const gameName = gameDetail?.res?.name || 'Game Detail';
   
-  if (error) return (
-    <Center width={'100%'}>
-      <div>Error loading game screenshots.</div>
-    </Center>
-  );
-    
-  if (data?.results?.length <= 0) return (
-    <Center width={'100%'}>
-      <div>Screenshots list not found.</div>
-    </Center>
-  );
+  return {
+    title: `${gameName} - Kukus`,
+    description: gameDetail?.res?.description || 'Detail game di Kukus',
+  };
+}
 
+const page = async ({params}:{params:any}) => {
+  const { id } = params;  
+  const gameScreenshot = await getGameScreenShots(id);
+  
   return (
-    <>
-      <Heading as={'h1'} fontWeight={'bold'} fontSize={{base:'2rem', md:'3rem'}} textTransform={'capitalize'}>
-        Game Screenshots
-      </Heading>
-
-      <Center width={'100%'}>
-        {isLoading ? (
-          <Flex width={'fit-content'} alignItems={'center'} gap={'20px'} flexWrap={'wrap'}>
-            {Array.from({length: 6}).map((_, idx:number) => (
-              <GameScreenshotsSkeleton key={idx} />
-            ))}
-          </Flex>
-        ) : (
-          <Flex width={'fit-content'} alignItems={'center'} gap={'20px'} flexWrap={'wrap'}>
-            {data?.results?.map((item:any) => (
-              <GameScreenshot key={item.id} data={item} />
-            ))}
-          </Flex>
-        )}
-      </Center>
-    </>
+    <GameScreenshotDisplay id={id} initialData={gameScreenshot} />
   )
 }
 
