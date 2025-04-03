@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, VStack } from '@chakra-ui/react'
+import { Box, Flex, Stack, VStack } from '@chakra-ui/react'
 import { CardHeight, CardWidth, MediumCardHeight, MediumCardWidth } from '@/constants'
 import OnViewAnimationWrapper from '../wrapper/OnViewAnimationWrapper'
 
@@ -72,6 +72,20 @@ export const GameScreenshotsSkeleton = () => {
   return (
     <OnViewAnimationWrapper>
       <Box width={{base:'200px', md:'300px'}} height={{base:'180px', md:'200px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+    </OnViewAnimationWrapper>
+  )
+}
+
+export const GameAchievementSkeleton = () => {
+  return (
+    <OnViewAnimationWrapper>
+      <Flex alignItems={'start'} gap={{base:'20px', md:'30px'}} width={'100%'} paddingBottom={'15px'} borderBottom={'1px solid white'}>
+        <Box position={'relative'} width={{base:'100px', md:'150px'}} height={{base:'100px', md:'150px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+        <Stack alignItems={'start'} gap={'10px'}>
+          <Box width={'100%'} height={{base:'10px', md:'30px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+          <Box width={'100%'} height={{base:'10px', md:'30px'}} bgColor={'gray.700'} borderRadius={'10px'} className='animate-pulse' />
+        </Stack>
+      </Flex>
     </OnViewAnimationWrapper>
   )
 }

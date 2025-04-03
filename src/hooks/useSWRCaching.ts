@@ -78,17 +78,22 @@ export const useGameAdditions = (id: number | null, fallbackData?:any) => {
   return { data, error, isLoading };
 };
 
-export const useGameAchievements = (id: number | null, fallbackData?:any) => {
+export const useGameAchievements = (id: number | null, fallbackData?: any, params?: FetcherParams) => {
   // Jika id null, jangan lakukan fetching
-  const key = id ? `/games/${id}/achievements` : null;
+  const key = id && params ? [`/games/${id}/achievements`, params] as const : `/games/${id}/achievements`;
 
-  const { data, error, isLoading } = useSWR(key, (endpoint) =>
-    modularFetcher(endpoint)
-  , {
-    refreshInterval: 60000,
-    revalidateOnMount: true,
-    fallbackData
-  });
+  const { data, error, isLoading } = useSWR(
+    key,
+    (keyParam: string | [string, FetcherParams]) => 
+      Array.isArray(keyParam)
+        ? modularFetcher(keyParam[0], keyParam[1])
+        : modularFetcher(keyParam),
+    {
+      refreshInterval: 60000,
+      revalidateOnMount: true,
+      fallbackData
+    }
+  );
 
   return { data, error, isLoading };
 };

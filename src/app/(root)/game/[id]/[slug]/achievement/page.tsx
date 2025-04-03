@@ -7,7 +7,9 @@ const page = async ({params}:{params:any}) => {
   const achievements = await getGameAchievement(id);
 
   return (
-    <Achievements id={id} initialData={achievements?.res} />
+    <>
+      <Achievements id={id} initialData={achievements?.res} />
+    </>
   )
 }
 

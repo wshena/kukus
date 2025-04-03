@@ -46,7 +46,7 @@ const PaginationLink = (
 
 
 const CustomPagination = ({count, pageSize, defaultPage}:{count:number, pageSize:number, defaultPage:number}) => {
-  const siblingCountValue = useBreakpointValue({ base: 0, md: 2 });
+  const siblingCountValue = useBreakpointValue({ base: 1, md: 2 });
   const searchParams = useSearchParams();
   const [currentPage, setCurrentPage] = useState(defaultPage);
   

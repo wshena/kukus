@@ -58,6 +58,13 @@ interface GameScreenshotProps {
   height: number,
   is_deleted: boolean
 }
+interface GameAchievementProps {
+  id: number,
+  name: string,
+  description: string,
+  image: string,
+  percent: string
+}
 
 type NavLinkProps = {
   id: number,
