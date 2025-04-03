@@ -14,11 +14,11 @@ interface SectionAndTitleProps {
   children?: React.ReactNode
 };
 interface GameGenresProps {
-  id: number | null,
-  name: string | null,
-  slug: string | null,
-  games_count: number | null,
-  image_background: string | null
+  id: number,
+  name: string,
+  slug: string,
+  games_count: number,
+  image_background: string
 };
 interface GameTagsProps extends GameGenresProps {
   language: string | null,
@@ -50,21 +50,21 @@ interface GameStoresProps {
     games_count: number | null,
     image_background: string | null
   }
-}
+};
 interface GameScreenshotProps {
   id: number,
   image: string,
   width: number,
   height: number,
   is_deleted: boolean
-}
+};
 interface GameAchievementProps {
   id: number,
   name: string,
   description: string,
   image: string,
   percent: string
-}
+};
 
 type NavLinkProps = {
   id: number,

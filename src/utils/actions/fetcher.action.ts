@@ -23,3 +23,11 @@ export const getGameAdditions = async (id:number, params?: FetcherParams) => {
 export const getGameAchievement = async (id:number, params?: FetcherParams) => {
   return fetcher(`/games/${id}/achievements`, 'get', params)
 }
+
+export const getAllGenres = async (params?:FetcherParams) => {
+  return fetcher(`/genres`, 'get', params)
+}
+
+export const getGamesAccordingGenres = async (id: number, params?:FetcherParams) => {
+  return fetcher(`/genres/${id}`, 'get', params)
+}

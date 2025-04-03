@@ -6,19 +6,19 @@ import React, { useRef } from 'react'
 import Slider from 'react-slick';
 import Carousel from './Carousel';
 import { CardSkeleton } from '../skeletons/Skeletons';
-import { CardCarouselSettings, H1FontSize } from '@/constants';
-import GameCard from '../cards/GameCard';
+import { GenreCarouselSettings, H1FontSize } from '@/constants';
+import GenresCard from '../GenresCard';
 
 interface Props {
   title: string;
-  url: string;
+  url?: string;
   data: {
     success: boolean,
     res: any
   }
 }
 
-const CardCarousel = ({title, url, data}:Props) => {
+const GenreCarousel = ({title, url, data}:Props) => {
   const sliderRef = useRef<Slider>(null);
 
   const handleNext = () => {
@@ -55,7 +55,7 @@ const CardCarousel = ({title, url, data}:Props) => {
       </Flex>
 
       {!data ? (
-        <Carousel ref={sliderRef} settings={CardCarouselSettings}>
+        <Carousel ref={sliderRef} settings={GenreCarouselSettings}>
           {Array.from({ length: 20 }).map((_, idx:number) => {
             return (
               <Box key={idx} className="">
@@ -67,11 +67,11 @@ const CardCarousel = ({title, url, data}:Props) => {
           })}
         </Carousel>
       ) : (
-        <Carousel ref={sliderRef} settings={CardCarouselSettings}>
+        <Carousel ref={sliderRef} settings={GenreCarouselSettings}>
           {data?.res?.results?.map((item:any) => (
             <Box key={item.id} className="">
               <Center width={'100%'}>
-                <GameCard data={item} />
+                <GenresCard data={item} />
               </Center>
             </Box>
           ))}
@@ -93,4 +93,4 @@ const CardCarousel = ({title, url, data}:Props) => {
   )
 }
 
-export default CardCarousel
+export default GenreCarousel

@@ -1,10 +1,17 @@
+import GenreCarousel from '@/components/carousels/GenreCarousel'
 import MainWrapper from '@/components/wrapper/MainWrapper'
+import { getAllGenres } from '@/utils/actions/fetcher.action'
 import React from 'react'
 
-const page = () => {
+const page = async () => {
+  const allGenre = await getAllGenres();
+
   return (
     <MainWrapper>
-      <div>page</div>
+      <GenreCarousel
+        title='popular genre' 
+        data={allGenre} 
+      />
     </MainWrapper>
   )
 }

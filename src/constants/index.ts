@@ -58,6 +58,50 @@ export const CardCarouselSettings = {
   ]
 };
 
+export const GenreCarouselSettings = {
+  dots: false,
+  infinite: true,
+  arrows: false, // matikan arrow bawaan
+  speed: 500,
+  slidesToShow: 5,
+  slidesToScroll: 5,
+  initialSlide: 0,
+  responsive: [
+    {
+      // Layar di bawah 480px
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+      },
+    },
+    {
+      // Layar di bawah 800px
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+      },
+    },
+    {
+      // Layar di bawah 1300px
+      breakpoint: 1300,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+      },
+    },
+    {
+      // Layar di bawah 2600px (atau tak terbatas jika Anda mau)
+      breakpoint: 2600,
+      settings: {
+        slidesToShow: 5,
+        slidesToScroll: 5,
+      },
+    },
+  ]
+};
+
 export const NavLinks:NavLinkProps[] = [
   {
     id: 1,
