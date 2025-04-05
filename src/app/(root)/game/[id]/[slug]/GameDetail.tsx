@@ -88,7 +88,7 @@ const GameDetail = ({id, initialData}:{id:number, initialData:any}) => {
             <Flex alignItems={'center'} gap={'5px'} flexWrap={'wrap'}>
               {developers?.map((item:DeveloperProps, index:number) => (
                 <React.Fragment key={item.id}>
-                  <Link href={`/publisher/${item.id}/${item.slug}`}>
+                  <Link href={`/developer/${item.id}/${item.slug}`}>
                     <Text cursor={'pointer'} fontSize={'1rem'} color={'gray.500'} _hover={{color:'white'}}>
                       {item.name}
                     </Text>

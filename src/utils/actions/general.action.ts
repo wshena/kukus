@@ -28,3 +28,8 @@ export function truncateText(title: string, maxLength: number): string {
   // Jika tidak ada, gunakan potongan langsung
   return (lastSpaceIndex > 0 ? truncated?.slice(0, lastSpaceIndex) : truncated) + "...";
 }
+
+export function slugToText(slug: string): string {
+  // Mengganti semua tanda '-' dengan spasi
+  return slug.replace(/-/g, ' ');
+}

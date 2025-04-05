@@ -6,8 +6,9 @@ import GameCard from '@/components/cards/GameCard'
 import { CardSkeleton } from '@/components/skeletons/Skeletons'
 import MainWrapper from '@/components/wrapper/MainWrapper'
 import { getGameList } from '@/utils/actions/fetcher.action'
-import { Center, Grid, Stack, Text } from '@chakra-ui/react'
+import { Center, Stack, Text } from '@chakra-ui/react'
 import CustomPagination from '@/components/Pagination'
+import GridContentWrapper from '@/components/wrapper/GridContentWrapper'
 
 const SearchPage = () => {
   const searchParams = useSearchParams()
@@ -83,40 +84,35 @@ const SearchPage = () => {
           </Center>
         )}
         
-        <Center width={'100%'}>
-          <Grid
-            templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)', lg: 'repeat(5, 1fr)', xl: 'repeat(6, 1fr)' }}
-            gap={{ base: '15px', md: '20px' }}
-            width={'100%'}
-          >
-            {isLoading ? (
-              <>
-                {Array.from({length:12}).map((_, idx) => (
-                  <CardSkeleton key={`skeleton-${idx}`} />
-                ))}
-              </>
-            ) : (
-              <>
-                {(!gameList || 
-                  gameList.success === false || 
-                  !gameList.res?.results || 
-                  gameList.res.results.length <= 0) ? (
-                  <Center gridColumn="1 / -1" p={8}>
-                    <Text>No games found matching your search criteria.</Text>
-                  </Center>
-                ) : (
-                  <>
-                    {gameList.res.results.map((item:any) => (
-                      <Center width={'100%'} key={`game-${item.id}`}>
-                        <GameCard data={item} />
-                      </Center>
-                    ))}
-                  </>
-                )}
-              </>
-            )}
-          </Grid>
-        </Center>
+        <GridContentWrapper>
+          {isLoading ? (
+            <>
+              {Array.from({length:12}).map((_, idx) => (
+                <CardSkeleton key={`skeleton-${idx}`} />
+              ))}
+            </>
+          ) : (
+            <>
+              {(!gameList || 
+                gameList.success === false || 
+                !gameList.res?.results || 
+                gameList.res.results.length <= 0) ? (
+                <Center gridColumn="1 / -1" p={8}>
+                  <Text>No games found matching your search criteria.</Text>
+                </Center>
+              ) : (
+                <>
+                  {gameList.res.results.map((item:any) => (
+                    <Center width={'100%'} key={`game-${item.id}`}>
+                      <GameCard data={item} />
+                    </Center>
+                  ))}
+                </>
+              )}
+            </>
+          )}
+        </GridContentWrapper>
+        
         {gameList?.res?.next && (
           <Center width={'100%'}>
             <CustomPagination count={gameList?.res?.count} pageSize={gameList?.res?.results?.length} defaultPage={1} />

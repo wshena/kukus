@@ -28,6 +28,14 @@ export const getAllGenres = async (params?:FetcherParams) => {
   return fetcher(`/genres`, 'get', params)
 }
 
-export const getGamesAccordingGenres = async (id: number, params?:FetcherParams) => {
+export const getGenreDetail = async (id: number, params?:FetcherParams) => {
   return fetcher(`/genres/${id}`, 'get', params)
+}
+
+export const getAllTags = async (params?:FetcherParams) => {
+  return fetcher(`/tags`, 'get', params)
+}
+
+export const getTagsDetail = async (id: number, params?:FetcherParams) => {
+  return fetcher(`/tags/${id}`, 'get', params)
 }

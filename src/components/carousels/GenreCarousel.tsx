@@ -7,7 +7,7 @@ import Slider from 'react-slick';
 import Carousel from './Carousel';
 import { CardSkeleton } from '../skeletons/Skeletons';
 import { GenreCarouselSettings, H1FontSize } from '@/constants';
-import GenresCard from '../GenresCard';
+import GenresCard from '../cards/GenresCard';
 
 interface Props {
   title: string;

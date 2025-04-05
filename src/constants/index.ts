@@ -114,3 +114,7 @@ export const NavLinks:NavLinkProps[] = [
     link: '/browse'
   },
 ]
+
+const ordering = [
+  'name', 'released', 'added', 'created', 'updated', 'rating', 'metacritic'
+]

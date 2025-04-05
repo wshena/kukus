@@ -118,9 +118,49 @@ export const useAllGenres = (fallbackData?: any, params?: FetcherParams) => {
   return { data, error, isLoading };
 };
 
-export const useGamesAccordingGenres = (id: number | null, fallbackData?: any, params?: FetcherParams) => {
+export const useGenreDetail = (id: number | null, fallbackData?: any, params?: FetcherParams) => {
   // Jika id null, jangan lakukan fetching
   const key = id && params ? [`/genres/${id}`, params] as const : `/genres/${id}`;
+
+  const { data, error, isLoading } = useSWR(
+    key,
+    (keyParam: string | [string, FetcherParams]) => 
+      Array.isArray(keyParam)
+        ? modularFetcher(keyParam[0], keyParam[1])
+        : modularFetcher(keyParam),
+    {
+      refreshInterval: 60000,
+      revalidateOnMount: true,
+      fallbackData
+    }
+  );
+
+  return { data, error, isLoading };
+};
+
+export const useAllTags = (fallbackData?: any, params?: FetcherParams) => {
+  // Jika id null, jangan lakukan fetching
+  const key = params ? [`/tags`, params] as const : `/genres`;
+
+  const { data, error, isLoading } = useSWR(
+    key,
+    (keyParam: string | [string, FetcherParams]) => 
+      Array.isArray(keyParam)
+        ? modularFetcher(keyParam[0], keyParam[1])
+        : modularFetcher(keyParam),
+    {
+      refreshInterval: 60000,
+      revalidateOnMount: true,
+      fallbackData
+    }
+  );
+
+  return { data, error, isLoading };
+};
+
+export const useTagsDetail = (id: number | null, fallbackData?: any, params?: FetcherParams) => {
+  // Jika id null, jangan lakukan fetching
+  const key = id && params ? [`/tags/${id}`, params] as const : `/genres/${id}`;
 
   const { data, error, isLoading } = useSWR(
     key,
