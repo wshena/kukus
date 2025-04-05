@@ -115,6 +115,132 @@ export const NavLinks:NavLinkProps[] = [
   },
 ]
 
-const ordering = [
-  'name', 'released', 'added', 'created', 'updated', 'rating', 'metacritic'
+export const allOrder = [
+  { id: 1, name: 'name', value: '-name' },
+  { id: 2, name: 'released', value: '-released' },
+  { id: 3, name: 'added', value: '-added' },
+  { id: 4, name: 'created', value: '-created' },
+  { id: 5, name: 'updated', value: '-updated' },
+  { id: 6, name: 'rating', value: '-rating' },
+  { id: 7, name: 'metacritic', value: '-metacritic' }
+];
+
+export const allGenre = [
+  { id: 4, name: "Action", value: "action" },
+  { id: 51, name: "Indie", value: "indie" },
+  { id: 3, name: "Adventure", value: "adventure" },
+  { id: 5, name: "RPG", value: "role-playing-games-rpg" },
+  { id: 10, name: "Strategy", value: "strategy" },
+  { id: 2, name: "Shooter", value: "shooter" },
+  { id: 40, name: "Casual", value: "casual" },
+  { id: 14, name: "Simulation", value: "simulation" },
+  { id: 7, name: "Puzzle", value: "puzzle" },
+  { id: 11, name: "Arcade", value: "arcade" },
+  { id: 83, name: "Platformer", value: "platformer" },
+  { id: 59, name: "Massively Multiplayer", value: "massively-multiplayer" },
+  { id: 1, name: "Racing", value: "racing" },
+  { id: 15, name: "Sports", value: "sports" },
+  { id: 6, name: "Fighting", value: "fighting" },
+  { id: 19, name: "Family", value: "family" },
+  { id: 28, name: "Board Games", value: "board-games" },
+  { id: 17, name: "Card", value: "card" },
+  { id: 34, name: "Educational", value: "educational" },
+];
+
+export const allPlatforms = [
+  {
+    id: 4,
+    name: "PC",
+    value: "pc",
+  },
+  {
+    id: 187,
+    name: "PlayStation 5",
+    value: "playstation5",
+  },
+  {
+    id: 1,
+    name: "Xbox One",
+    value: "xbox-one",
+  },
+  {
+    id: 18,
+    name: "PlayStation 4",
+    value: "playstation4",
+  },
+  {
+    id: 186,
+    name: "Xbox Series S/X",
+    value: "xbox-series-x",
+  },
+  {
+    id: 7,
+    name: "Nintendo Switch",
+    value: "nintendo-switch",
+  },
+  {
+    id: 3,
+    name: "iOS",
+    value: "ios",
+  },
+  {
+    id: 21,
+    name: "Android",
+    value: "android",
+  },
+  {
+    id: 8,
+    name: "Nintendo 3DS",
+    value: "nintendo-3ds",
+  },
+  {
+    id: 9,
+    name: "Nintendo DS",
+    value: "nintendo-ds",
+  },
+  {
+    id: 14,
+    name: "Xbox 360",
+    value: "xbox360",
+  },
+  {
+    id: 80,
+    name: "Xbox",
+    value: "xbox-old",
+  },
+  {
+    id: 16,
+    name: "PlayStation 3",
+    value: "playstation3",
+  },
+  {
+    id: 15,
+    name: "PlayStation 2",
+    value: "playstation2",
+  },
+  {
+    id: 27,
+    name: "PlayStation",
+    value: "playstation1",
+  },
+  {
+    id: 19,
+    name: "PS Vita",
+    value: "ps-vita",
+  },
+  {
+    id: 17,
+    name: "PSP",
+    value: "psp",
+  },
+  {
+    id: 10,
+    name: "Wii U",
+    value: "wii-u",
+  },
+  {
+    id: 11,
+    name: "Wii",
+    value: "wii",
+  },
 ]

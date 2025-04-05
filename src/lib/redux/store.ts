@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 
 import utilityReducer from '@/lib/redux/slice/utility.action'
 import gameReducer from '@/lib/redux/slice/game.action'
+import filterReducer from '@/lib/redux/slice/filter.action'
 
 const persistConfig = {
   key: 'root',
@@ -14,7 +15,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   utility: utilityReducer,
-  game: gameReducer
+  game: gameReducer,
+  filter: filterReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
