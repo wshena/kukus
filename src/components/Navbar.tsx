@@ -22,7 +22,7 @@ const Navbar = () => {
   const pathname = usePathname();
   
   return (
-    <Center aria-label='main menu' width={'100%'} position={'fixed'} top={0} zIndex={50} bgColor={'black'}>
+    <Center aria-label='main menu' width={'100%'} position={'fixed'} top={0} zIndex={100} bgColor={'black'}>
       <Box width={'1200px'} paddingBottom={'1rem'}>
         <nav className=''>
           <Flex paddingY={'1rem'} paddingX={{base:'20px', md:'20px', xl:'0px'}} width={'100%'} alignItems={'center'} justifyContent={'space-between'}>

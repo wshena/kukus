@@ -6,6 +6,7 @@ import { Stack } from '@chakra-ui/react'
 import React from 'react'
 import GameDescription from '../offMenu/GameDescription'
 import GameScreenshots from '../offMenu/GameScreenshots'
+import SearchForm from '../offMenu/SearchForm'
 
 const MainWrapper = ({children}:{children:React.ReactNode}) => {
   const isMobileMenuClick = useOffMenuClick();
@@ -35,7 +36,9 @@ const MainWrapper = ({children}:{children:React.ReactNode}) => {
         <GameScreenshots />
       )}
 
-      
+      {(isShowOffScreenDiv?.status === true && isShowOffScreenDiv?.type === 'search-form') && (
+        <SearchForm />
+      )}
     </Stack>
   )
 }

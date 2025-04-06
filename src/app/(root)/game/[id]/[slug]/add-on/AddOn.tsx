@@ -20,7 +20,7 @@ const AddOn = ({id, initialData}:{id:number, initialData:any}) => {
     
   if (data?.results?.length <= 0) return (
     <Center width={'100%'}>
-      <div>Screenshots list not found.</div>
+      <div>Add on list not found.</div>
     </Center>
   );
 

@@ -7,7 +7,7 @@ const LoginButton = () => {
   const router = useRouter();
 
   return (
-    <button onClick={() => router.push('/login')}>
+    <button onClick={() => router.push('/login')} className='cursor-pointer'>
       <Box bgColor={'blue.500'} color={'white'} textTransform={'capitalize'} paddingY={'.4rem'} paddingX={'1.3rem'} borderRadius={'5px'}>
         <Text fontSize={{base:'.9rem', md:'.9rem'}}>login</Text>
       </Box>

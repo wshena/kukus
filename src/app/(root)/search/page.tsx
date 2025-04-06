@@ -6,7 +6,7 @@ import GameCard from '@/components/cards/GameCard'
 import { CardSkeleton } from '@/components/skeletons/Skeletons'
 import MainWrapper from '@/components/wrapper/MainWrapper'
 import { getGameList } from '@/utils/actions/fetcher.action'
-import { Center, Stack, Text } from '@chakra-ui/react'
+import { Center, Heading, Stack, Text } from '@chakra-ui/react'
 import CustomPagination from '@/components/Pagination'
 import GridContentWrapper from '@/components/wrapper/GridContentWrapper'
 
@@ -83,6 +83,8 @@ const SearchPage = () => {
             <Text color="red.500">Error: {error}</Text>
           </Center>
         )}
+
+        <Heading as={'h1'} fontSize={{base:'1.3rem', md:'2rem'}}>Search results for '{q}'</Heading>
         
         <GridContentWrapper>
           {isLoading ? (
