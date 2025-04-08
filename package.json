@@ -12,6 +12,8 @@
     "@chakra-ui/react": "^3.13.0",
     "@emotion/react": "^11.14.0",
     "@reduxjs/toolkit": "^2.6.1",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.49.4",
     "axios": "^1.8.4",
     "bottleneck": "^2.19.5",
     "motion": "^12.6.2",
