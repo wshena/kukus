@@ -1,3 +1,5 @@
+import { defineStyle } from "@chakra-ui/react";
+
 export const CardWidth: ChakraResponsive = {base:'100px', md:'150px'};
 export const CardHeight: ChakraResponsive = {base:'150px', md:'200px'};
 
@@ -283,3 +285,25 @@ export const FooterLinks = [
 		]
   },
 ]
+
+export const FloatingStyles = defineStyle({
+  pos: "absolute",
+  bg: "",
+  px: "0.5",
+  top: "-3",
+  color: 'white',
+  insetStart: "2",
+  fontWeight: "normal",
+  pointerEvents: "none",
+  transition: "position",
+  _peerPlaceholderShown: {
+    color: "white",
+    top: "2.5",
+    insetStart: "3",
+  },
+  _peerFocusVisible: {
+    color: "white",
+    top: "-3",
+    insetStart: "2",
+  },
+})

@@ -6,17 +6,19 @@ import storage from 'redux-persist/lib/storage';
 import utilityReducer from '@/lib/redux/slice/utility.action'
 import gameReducer from '@/lib/redux/slice/game.action'
 import filterReducer from '@/lib/redux/slice/filter.action'
+import alertReducer from '@/lib/redux/slice/alert.action'
 
 const persistConfig = {
   key: 'root',
   storage: storage,
-  blacklist: ['utilityState']
+  blacklist: ['utilityState', 'alertState']
 };
 
 const rootReducer = combineReducers({
   utility: utilityReducer,
   game: gameReducer,
-  filter: filterReducer
+  filter: filterReducer,
+  alert: alertReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
