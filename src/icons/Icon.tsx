@@ -1,8 +1,20 @@
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 import { RiMenu3Line, RiCloseLargeLine } from "react-icons/ri";
-import { FaStar, FaRegStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaStar, FaRegStar, FaStarHalfAlt, FaYoutube, FaTwitter, FaFacebook } from "react-icons/fa";
 import { PiMagnifyingGlassFill } from "react-icons/pi";
 import { MdOutlineZoomOutMap } from "react-icons/md";
+
+export const YoutubeIcon = ({size, color, classname}:IconProps) => {
+  return <FaYoutube size={size} color={color} className={classname} />
+}
+
+export const TwitterIcon = ({size, color, classname}:IconProps) => {
+  return <FaTwitter size={size} color={color} className={classname} />
+}
+
+export const FacebookIcon = ({size, color, classname}:IconProps) => {
+  return <FaFacebook size={size} color={color} className={classname} />
+}
 
 export const ZoomOutIcon = ({size, color, classname}:IconProps) => {
   return <MdOutlineZoomOutMap size={size} color={color} className={classname} />

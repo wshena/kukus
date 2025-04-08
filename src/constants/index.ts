@@ -244,3 +244,42 @@ export const allPlatforms = [
     value: "wii",
   },
 ]
+
+export const Terms = [
+	'terms of service',
+	'privacy policy',
+	'store refund',
+	'policy',
+	'publisher index'
+]
+
+export const FooterLinks = [
+  {
+    id:1,
+		title: 'resource',
+		links: [
+			'support-a-creator',
+			'distribute on kukus',
+			'careers',
+			'company',
+			'fun art policy',
+			'ux research',
+			'store EULA',
+			'online service',
+			'community rules',
+			'epic news room'
+		]
+  },
+	{
+    id:2,
+		title: 'made by kukus',
+		links: [
+			'battle breakers',
+			'fortnite',
+			'inifinity blade',
+			'robo recall',
+			'shadow complex',
+			'unreal tournament'
+		]
+  },
+]
