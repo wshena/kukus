@@ -10,7 +10,7 @@ const GameDetailTabs = ({id, slug}:{id:number, slug:string}) => {
   const baseUrl = `/game/${id}/${slug}`;
 
   return (
-    <Box position={'fixed'} top={'60px'} zIndex={50} paddingY={'1rem'} paddingX={{base:'20px', md:'0px'}} bgColor={'black'} width={'100%'} overflowX={{base:'auto', md:'hidden'}} display="flex" justifyContent={{md: 'center'}}>
+    <Box position={'fixed'} top={'60px'} zIndex={100} paddingY={'1rem'} paddingX={{base:'20px', md:'0px'}} width={'100%'} overflowX={{base:'auto', md:'hidden'}} display="flex" justifyContent={{md: 'center'}} bgColor={'black'}>
       <Flex alignItems={'center'} width={{base:'max-content', md:'fit-content'}} gap={{base:'15px', md:'20px'}} minWidth={{base: 'max-content'}}>
         {DetailTabs?.map((item:any) => {
           const generateUrl = () => {

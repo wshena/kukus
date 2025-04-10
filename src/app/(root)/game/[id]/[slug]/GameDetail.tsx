@@ -23,7 +23,7 @@ const GameDetail = ({id, initialData}:{id:number, initialData:any}) => {
   const { data, error, isLoading } = useGameDetail(id ? Number(id) : null, initialData);
   const gameData = data ?? {};
 
-  const { name, rating, background_image, description, genres, tags, platforms, developers, publishers, released, playtime, stores } = gameData;
+  const { name, slug, rating, background_image, description, genres, tags, platforms, developers, publishers, released, playtime, stores } = gameData;
   const PcPlatform = platforms?.find((item:any) => item.platform.name === 'PC');
 
   useEffect(() => {
@@ -149,7 +149,12 @@ const GameDetail = ({id, initialData}:{id:number, initialData:any}) => {
             </Flex>
           </Stack>
           
-          <AddToWishlistButton />
+          <AddToWishlistButton gameData={{
+            id: id.toString(),
+            title: name,
+            game_cover_url: background_image,
+            slug: slug 
+          }} />
         </Stack>
       </Flex>
     </>

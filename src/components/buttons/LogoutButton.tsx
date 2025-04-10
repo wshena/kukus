@@ -52,7 +52,7 @@ const LogoutButton = () => {
 
   return (
     <button onClick={performLogout}>
-      <Center width={'150px'} bgColor={'red.500'} padding={'.8rem'} borderRadius={'5px'} cursor={'pointer'}>
+      <Center width={'200px'} bgColor={'red.500'} padding={'.5rem'} borderRadius={'5px'} cursor={'pointer'}>
         {isLoggingOut ? <Spinner size="sm" color="white" /> : <Text>Log out</Text>}
       </Center>
     </button>
