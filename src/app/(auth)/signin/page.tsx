@@ -1,15 +1,13 @@
 'use client'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-// import supabase from '@/lib/supabaseClient'
 import { Heading, Box, Field, Input, Text, Flex, Spinner } from '@chakra-ui/react'
-import { useRouter } from 'next/navigation'
 import { useAppDispatch } from '@/lib/hooks'
 import { setAlert } from '@/lib/redux/slice/alert.action'
 import { FloatingStyles } from '@/constants'
+import { signup } from '@/utils/actions/auth.action'
 
 const Page = () => {
-  const router = useRouter()
   const dispatch = useAppDispatch();
 
   const [showPass, setShowPass] = useState(false);
@@ -23,42 +21,45 @@ const Page = () => {
     setShowPass(!showPass);
   }
 
-  // const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault()
-  //   setErrorMsg('')
-  //   setIsLoading(true)
-
-  //   // Validasi format email menggunakan regex
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  //   if (!emailRegex.test(email)) {
-  //     setErrorMsg('Format email tidak valid.')
-  //     setIsLoading(false)
-  //     return
-  //   }
-
-  //   // Validasi password (misal minimal 6 karakter)
-  //   if (password.length < 6) {
-  //     setErrorMsg('Password minimal harus 6 karakter.')
-  //     setIsLoading(false)
-  //     return
-  //   }
-
-  //   // Proses login dengan Supabase
-  //   const { data, error } = await supabase.auth.signUp({
-  //     email,
-  //     password,
-  //   })
-
-  //   if (error) {
-  //     dispatch(setAlert({
-  //       label:error.message || 'Sign in gagal, silakan coba lagi.',
-  //       type:'error',
-  //     }))
-  //   } else if (data) {
-  //     router.push('/auth/login')
-  //   }
-  //   setIsLoading(false)
-  // };
+  const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setErrorMsg('');
+      setIsLoading(true);
+  
+      // Validasi format email menggunakan regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        setErrorMsg('Format email tidak valid.');
+        setIsLoading(false);
+        return;
+      }
+  
+      // Validasi password (minimal 6 karakter)
+      if (password.length < 6) {
+        setErrorMsg('Password minimal harus 6 karakter.');
+        setIsLoading(false);
+        return;
+      }
+  
+      try {
+        const process = await signup(email, password);
+        
+        if (process?.success === false) {
+          dispatch(setAlert({
+            label: process?.message || 'Sign in gagal, silakan coba lagi.',
+            type: 'error',
+          }));
+        } else if (process?.success === true) {
+          console.log("Sign in success");
+          console.log("Cookies after login:", document.cookie);
+          window.location.href = '/login';
+        }
+        setIsLoading(false);
+      } catch (error) {
+        console.error(error);
+        setIsLoading(false);
+      }
+    };
 
   useEffect(() => {
     if (!errorMsg) return;
@@ -75,7 +76,7 @@ const Page = () => {
       <Heading as={'h1'} fontSize={{ base: '1.3rem', md: '1.5rem', lg: '2rem' }}>
         Create Account
       </Heading>
-      <form onSubmit={() => {}} className='w-full flex flex-col gap-[20px]'>
+      <form onSubmit={handleSignin} className='w-full flex flex-col gap-[20px]'>
         {/* error message */}
         {errorMsg !== '' && (
           <Box bg="red.500" padding="0.5rem" borderRadius="md">

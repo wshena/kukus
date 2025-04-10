@@ -9,6 +9,7 @@ import SigninButton from './buttons/SigninButton'
 import LoginButton from './buttons/LoginButton'
 import SearchButton from './buttons/SearchButton'
 import { usePathname } from 'next/navigation'
+import ProfileButton from './buttons/ProfileButton'
 
 const NavLink = ({data, pathname}:{data:NavLinkProps, pathname:string}) => {
   return (
@@ -18,7 +19,7 @@ const NavLink = ({data, pathname}:{data:NavLinkProps, pathname:string}) => {
   )
 }
 
-const Navbar = () => {
+const Navbar = ({userData}:{userData:any}) => {
   const pathname = usePathname();
   
   return (
@@ -41,10 +42,16 @@ const Navbar = () => {
                 )
               })}
             </Flex>
-            <Flex display={{base:'none', md:'flex'}} alignItems={'center'} gap={'10px'}>
+            <Flex display={{base:'none', md:'flex'}} alignItems={'center'} gap={'20px'}>
               <SearchButton />
-              <LoginButton />
-              <SigninButton />
+              {userData.success === true && userData?.data !== null ? (
+                <ProfileButton userEmail={userData?.data?.email} />
+              ) : (
+                <Flex display={{base:'none', md:'flex'}} alignItems={'center'} gap={'10px'}>
+                  <LoginButton />
+                  <SigninButton />
+                </Flex>
+              )}
             </Flex>
           </Flex>
         </nav>

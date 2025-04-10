@@ -4,7 +4,7 @@ import { FaStar, FaRegStar, FaStarHalfAlt, FaYoutube, FaTwitter, FaFacebook, FaU
 import { PiMagnifyingGlassFill } from "react-icons/pi";
 import { MdOutlineZoomOutMap } from "react-icons/md";
 
-export const USerIcon = ({size, color, classname}:IconProps) => {
+export const UserIcon = ({size, color, classname}:IconProps) => {
   return <FaUser size={size} color={color} className={classname} />
 }
 

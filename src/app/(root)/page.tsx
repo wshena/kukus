@@ -5,13 +5,8 @@ import CardCarousel from '@/components/carousels/CardCarousel'
 import { getThreeRandomItems } from '@/utils/actions/general.action'
 import { Center, Flex } from '@chakra-ui/react'
 import MediumGameCard from '@/components/cards/MediumGameCard'
-import { getCurrentUser } from '@/utils/actions/auth.action'
 
 const page = async () => {
-  const user = await getCurrentUser();
-
-  console.log(user);
-  
   const [gameList, recentlyUpdatedGameList, upcomingReleasedGameList, MostPopularGameList] = await Promise.all([
     getGameList({ page: 1, page_size: 20 }),
     getGameList({ page: 1, page_size: 20, ordering: '-updated' }),

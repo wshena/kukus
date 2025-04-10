@@ -96,4 +96,26 @@ export async function isAuthenticated() {
   const user = await getCurrentUser();
 
   return !!user;
+};
+
+export const logout = async () => {
+  try {
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('Timeout saat logout')), 10000)
+    );
+
+    const { error } = await Promise.race([
+      supabase.auth.signOut(),
+      timeoutPromise
+    ]) as { error?: Error };
+
+    if (error) {
+      console.error('Terjadi error saat signOut Supabase:', error.message);
+      throw error;
+    }
+
+  } catch (error: any) {
+    console.error('Error pada fungsi performLogout:', error.message);
+    throw error;
+  }
 }

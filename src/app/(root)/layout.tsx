@@ -1,11 +1,14 @@
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
+import { getCurrentUser } from '@/utils/actions/auth.action';
 import React from 'react'
 
-const RootLayout = ({children}:{children:React.ReactNode}) => {
+const RootLayout = async ({children}:{children:React.ReactNode}) => {
+  const user = await getCurrentUser();
+  
   return (
     <>
-      <Navbar />
+      <Navbar userData={user} />
       {children}
       <Footer />
     </>
