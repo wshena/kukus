@@ -14,6 +14,22 @@ export function getThreeRandomItems<T>(items: T[]): T[] {
   return shuffled.slice(0, 3);
 }
 
+export function getRandomItems<T>(items: T[], limit:number): T[] {
+  if (items?.length <= limit) return [...items];
+
+  // Salin array agar tidak mengubah array asli
+  const shuffled = [...items];
+
+  // Fisher-Yates shuffle
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  // Ambil 3 item teratas
+  return shuffled.slice(0, limit);
+}
+
 export function truncateText(title: string, maxLength: number): string {
   // Jika panjang title sudah kurang atau sama dengan maxLength, kembalikan title asli
   if (title?.length <= maxLength) return title;

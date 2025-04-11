@@ -2,9 +2,10 @@ import React from 'react'
 import MainWrapper from '@/components/wrapper/MainWrapper'
 import { getGameList } from '@/utils/actions/fetcher.action'
 import CardCarousel from '@/components/carousels/CardCarousel'
-import { getThreeRandomItems } from '@/utils/actions/general.action'
+import { getRandomItems, getThreeRandomItems } from '@/utils/actions/general.action'
 import { Center, Flex } from '@chakra-ui/react'
 import MediumGameCard from '@/components/cards/MediumGameCard'
+import HomeJumbotron from '@/components/HomeJumbotron'
 
 const page = async () => {
   const [gameList, recentlyUpdatedGameList, upcomingReleasedGameList, MostPopularGameList] = await Promise.all([
@@ -17,9 +18,11 @@ const page = async () => {
   const threeRandomGameList = getThreeRandomItems(gameList?.res?.results);
   const threeRandomRecentyUpdated = getThreeRandomItems(recentlyUpdatedGameList?.res?.results);
   const threeRandomMostPopular = getThreeRandomItems(MostPopularGameList?.res?.results);
+  const homeJumbotronItemlist = getRandomItems(gameList?.res?.results, 5);
 
   return (
     <MainWrapper>
+      <HomeJumbotron itemList={homeJumbotronItemlist} />
       <CardCarousel 
         title='Discover Something New' 
         url={`/collection/discover-something-new`} 
