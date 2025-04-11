@@ -82,8 +82,6 @@ const MobileNav = () => {
   const { isMobileNavMenuClick } = useAppSelector((state:RootState) => state.utility);
   const handleCloseMenu = () => dispatch(setMobileNavMenu(false));
 
-  console.log(userData)
-
   return (
     <Box zIndex={100} position={'fixed'} width={'100vw'} height={'100vh'} padding={'20px'} bgColor={'black'} color={'white'} display={{base:'block', md:'none'}} top={0} transform={isMobileNavMenuClick ? 'translateX(0)' : 'translateX(100%)'} transition="transform 0.5s ease-in-out">
       <Stack width={'100%'} alignItems={'start'} gap={'20px'}>
