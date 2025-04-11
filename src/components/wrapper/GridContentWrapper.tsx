@@ -7,6 +7,7 @@ const GridContentWrapper = ({children}:{children:React.ReactNode}) => {
       <Grid
         templateColumns={{ base: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)', lg: 'repeat(5, 1fr)', xl: 'repeat(6, 1fr)' }}
         gap={{ base: '15px', md: '20px' }}
+        alignItems={'start'}
         width={'100%'}
       >
         {children}

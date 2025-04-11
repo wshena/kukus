@@ -64,33 +64,36 @@ export const signup = async (email:string, password:string) => {
 };
 
 export const getCurrentUser = async () => {
-  const supabase = await createClient()
+  const supabase = await createClient();
 
   try {
-    const { data: { user }, error } = await supabase.auth.getUser()
+    const { data: { user }, error } = await supabase.auth.getUser();
 
     if (error || !user) {
       return {
         success: false,
         data: null,
         message: error?.message || 'User not found',
-      }
+      };
     }
+
+    // Konversi user menjadi plain object
+    const plainUser = JSON.parse(JSON.stringify(user));
 
     return {
       success: true,
-      data: user,
-    }
+      data: plainUser,
+    };
 
   } catch (err: any) {
-    console.error('getCurrentUser error:', err)
+    console.error('getCurrentUser error:', err);
     return {
       success: false,
       data: null,
       message: err.message || 'Unknown error',
-    }
+    };
   }
-}
+};
 
 export async function isAuthenticated() {
   const user = await getCurrentUser();

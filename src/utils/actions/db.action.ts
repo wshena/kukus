@@ -146,3 +146,104 @@ export const getUserWishlist = async (userId: string) => {
     };
   }
 };
+
+export const getGamesInWishlist = async (wishlistId: string) => {
+  try {
+    const { data, error } = await supabase
+      .from('gameList')
+      .select('*')
+      .eq('wishlist_id', wishlistId);
+
+    if (error) {
+      return {
+        success: false,
+        message: error.message || 'Terjadi kesalahan saat mengambil data game di wishlist.'
+      };
+    }
+
+    return {
+      success: true,
+      message: 'Data game di wishlist berhasil diambil.',
+      data
+    };
+
+  } catch (error: any) {
+    console.error("Error getGamesInWishlist:", error);
+    return {
+      success: false,
+      message: error.message || 'Terjadi kesalahan saat mengambil data game di wishlist.'
+    };
+  }
+};
+
+export const removeGameFromWishlist = async (gameId: string, wishlistId: string) => {
+  try {
+    const { data, error } = await supabase
+      .from('gameList')
+      .delete()
+      .eq('id', gameId)
+      .eq('wishlist_id', wishlistId);
+
+    if (error) {
+      return {
+        success: false,
+        message: error.message || 'Terjadi kesalahan saat menghapus game dari wishlist.'
+      };
+    }
+
+    return {
+      success: true,
+      message: 'Game berhasil dihapus dari wishlist.',
+      data
+    };
+
+  } catch (error: any) {
+    console.error("Error removeGameFromWishlist:", error);
+    return {
+      success: false,
+      message: error.message || 'Terjadi kesalahan saat menghapus game dari wishlist.'
+    };
+  }
+};
+
+export const checkGameInWishlist = async (gameId: string, wishlistId: string) => {
+  try {
+    const { data, error } = await supabase
+      .from('gameList')
+      .select('*')
+      .eq('id', gameId)
+      .eq('wishlist_id', wishlistId)
+      .maybeSingle(); // Mengembalikan satu record jika ada, atau null jika tidak ada
+
+    if (error) {
+      return {
+        success: false,
+        message: error.message || 'Terjadi kesalahan saat mengecek data game di wishlist.',
+        exists: false,
+      };
+    }
+
+    if (data) {
+      return {
+        success: true,
+        message: 'Game sudah ada di wishlist.',
+        exists: true,
+        data,
+      };
+    } else {
+      return {
+        success: true,
+        message: 'Game belum ada di wishlist.',
+        exists: false,
+      };
+    }
+    
+  } catch (error: any) {
+    console.error("Error checkGameInWishlist:", error);
+    return {
+      success: false,
+      message: error.message || 'Terjadi kesalahan saat mengecek game di wishlist.',
+      exists: false,
+    };
+  }
+};

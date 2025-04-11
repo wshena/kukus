@@ -11,22 +11,22 @@ interface GameProps {
   slug: string;
 }
 
-interface AddToWishlistButtonProps {
+interface RemoveFromWishlistProps {
   gameData: GameProps;
   onToggleWishlist: () => void;
 }
 
-const AddToWishlistButton = ({ gameData, onToggleWishlist }: AddToWishlistButtonProps) => {
+const RemoveFromWishlist = ({ gameData, onToggleWishlist }: RemoveFromWishlistProps) => {
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleAddToWishlist = async () => {
+  const handleRemoveFromWishlist = async () => {
     setIsLoading(true);
     try {
       const response = await fetch('/api/wishlist', {
-        method: 'POST',
+        method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(gameData)
+        body: JSON.stringify({ gameId: gameData.id })
       });
 
       const result = await response.json();
@@ -35,13 +35,13 @@ const AddToWishlistButton = ({ gameData, onToggleWishlist }: AddToWishlistButton
         dispatch(setAlert({ type: 'success', label: result.message }));
         onToggleWishlist();
       } else {
-        dispatch(setAlert({ type: 'warning', label: result.message }));
+        dispatch(setAlert({ type: 'error', label: result.message }));
       }
     } catch (error: any) {
       console.error(error);
       dispatch(setAlert({
         type: 'error',
-        label: error.message || 'Terjadi kesalahan saat menambahkan ke wishlist.'
+        label: error.message || 'Terjadi kesalahan saat menghapus game dari wishlist.'
       }));
     } finally {
       setIsLoading(false);
@@ -49,11 +49,11 @@ const AddToWishlistButton = ({ gameData, onToggleWishlist }: AddToWishlistButton
   };
 
   return (
-    <button onClick={handleAddToWishlist} aria-label="add to wishlist">
+    <button onClick={handleRemoveFromWishlist} aria-label="remove from wishlist">
       <Center
         padding=".7rem"
         width="100%"
-        bgColor="blue.500"
+        bgColor="red.500"
         cursor="pointer"
         borderRadius="5px"
         _hover={{ transform: 'scale(0.95)' }}
@@ -61,11 +61,11 @@ const AddToWishlistButton = ({ gameData, onToggleWishlist }: AddToWishlistButton
       >
         {isLoading ? 
           <Spinner size="sm" color="black" /> : 
-          <Text color="white">Add to Wishlist</Text>
+          <Text color="white">Remove from Wishlist</Text>
         }
       </Center>
     </button>
   );
 };
 
-export default AddToWishlistButton;
+export default RemoveFromWishlist;

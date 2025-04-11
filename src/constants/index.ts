@@ -29,8 +29,8 @@ export const CardCarouselSettings = {
       // Layar di bawah 480px
       breakpoint: 480,
       settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 2,
+        slidesToScroll: 2,
       },
     },
     {

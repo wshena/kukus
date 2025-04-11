@@ -1,6 +1,6 @@
 'use client'
-import React, { useState } from 'react'
-import { Box, Flex, Stack, Text } from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
+import { Box, Flex, Heading, Stack, Text } from '@chakra-ui/react'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks'
 import { RootState } from '@/lib/redux/store'
 import { setMobileNavMenu } from '@/lib/redux/slice/utility.action'
@@ -9,6 +9,10 @@ import Logo from '../Logo'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { NavLinks } from '@/constants'
+import { getCurrentUser } from '@/utils/actions/auth.action'
+import LogoutButton from '../buttons/LogoutButton'
+import LoginButton from '../buttons/LoginButton'
+import SigninButton from '../buttons/SigninButton'
 
 const CloseButton = ({handleClick}:{handleClick:any}) => {
   return (
@@ -73,9 +77,12 @@ const MobileForm = ({handleCloseMenu}:{handleCloseMenu:any}) => {
 const MobileNav = () => {
   const dispatch = useAppDispatch();
   const pathname = usePathname();
-  
+
+  const userData = useAppSelector((state: RootState) => state.auth.user);
   const { isMobileNavMenuClick } = useAppSelector((state:RootState) => state.utility);
   const handleCloseMenu = () => dispatch(setMobileNavMenu(false));
+
+  console.log(userData)
 
   return (
     <Box zIndex={100} position={'fixed'} width={'100vw'} height={'100vh'} padding={'20px'} bgColor={'black'} color={'white'} display={{base:'block', md:'none'}} top={0} transform={isMobileNavMenuClick ? 'translateX(0)' : 'translateX(100%)'} transition="transform 0.5s ease-in-out">
@@ -84,13 +91,30 @@ const MobileNav = () => {
           <Logo />
           <CloseButton handleClick={handleCloseMenu} />
         </Flex>
-        <Stack alignItems={'start'} gap={'20px'} width={'100%'}>
-          <MobileForm handleCloseMenu={handleCloseMenu} />
-          {NavLinks?.map((item:NavLinkProps) => {
-            return (
-              <NavLink data={item} key={item.id} pathname={pathname} />
-            )
-          })}
+        <Stack alignItems={'start'} justifyContent={'space-between'} width={'100%'} height={'80vh'}>
+          <Stack width={'100%'} alignItems={'start'} gap={'20px'}>
+            <Heading as={'h1'}>{userData?.email}</Heading>
+            <MobileForm handleCloseMenu={handleCloseMenu} />
+            {NavLinks?.map((item:NavLinkProps) => {
+              return (
+                <NavLink data={item} key={item.id} pathname={pathname} />
+              )
+            })}
+            {userData && (<NavLink data={{
+              id: 3,
+              label: 'wishlist',
+              link: '/wishlist'
+            }} pathname={pathname} />)}
+          </Stack>
+
+          {userData ? (
+            <LogoutButton />
+          ) : (
+            <Stack width={'100%'} alignItems={'center'} gap={'20px'}>
+              <LoginButton />
+              <SigninButton />
+            </Stack>
+          )}
         </Stack>
       </Stack>
     </Box>
