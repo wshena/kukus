@@ -9,8 +9,8 @@ const GameDescription = ({description}:{description:string}) => {
   const dispatch = useAppDispatch();
 
   return (
-    <Center zIndex={100} position={'fixed'} top={0} width={'100%'} height={'100vh'}  className='bg-black/70'>
-      <Stack width={{base:'90%', "2xl": '50%'}} height={{base:'80%', md:'fit-content'}} padding={'1rem'} borderRadius={'10px'} bgColor={'gray.900'} gap={'20px'} overflowY={'auto'}>
+    <Center zIndex={100} position={'fixed'} top={0} left={0} width={'100%'} height={'100vh'}  className='bg-black/70'>
+      <Stack width={{base:'90%', lg:'70%', "2xl": '50%'}} height={{base:'80%', md:'fit-content'}} padding={'1rem'} borderRadius={'10px'} bgColor={'gray.900'} gap={'20px'} overflowY={'auto'}>
         <Flex width={'100%'} alignItems={'center'} justifyContent={'flex-end'}>
           <button className='cursor-pointer' onClick={() => dispatch(setOffScreenDiv({
             status: false,

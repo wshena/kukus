@@ -1,11 +1,13 @@
 import React from 'react'
-import MainWrapper from '@/components/wrapper/MainWrapper'
 import { getGameList } from '@/utils/actions/fetcher.action'
-import CardCarousel from '@/components/carousels/CardCarousel'
 import { getRandomItems, getThreeRandomItems } from '@/utils/actions/general.action'
 import { Center, Flex } from '@chakra-ui/react'
-import MediumGameCard from '@/components/cards/MediumGameCard'
-import HomeJumbotron from '@/components/HomeJumbotron'
+import dynamic from 'next/dynamic'
+
+const MainWrapper = dynamic(() => import('@/components/wrapper/MainWrapper'));
+const HomeJumbotron = dynamic(() => import('@/components/HomeJumbotron'));
+const MediumGameCard = dynamic(() => import('@/components/cards/MediumGameCard'));
+const CardCarousel = dynamic(() => import('@/components/carousels/CardCarousel'));
 
 const page = async () => {
   const [gameList, recentlyUpdatedGameList, upcomingReleasedGameList, MostPopularGameList] = await Promise.all([

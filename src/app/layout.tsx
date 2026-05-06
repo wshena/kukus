@@ -34,12 +34,12 @@ export default async function RootLayout({
         className={`${monaSans.variable} antialiased overflow-x-hidden`}
       >
         <AppProvider>
-          <ProgressBarProvider>
+          {/* <ProgressBarProvider>
+          </ProgressBarProvider> */}
             <AuthProvider />
             {children}
             <Toaster />
             <MobileNav />
-          </ProgressBarProvider>
         </AppProvider>
       </body>
     </html>

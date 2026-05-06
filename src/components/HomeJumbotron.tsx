@@ -20,7 +20,6 @@ const SmallBox: React.FC<SmallBoxProps> = ({ idx, item_index, handleClick, progr
       onClick={() => handleClick(idx, data)}
     >
       <Flex
-        padding=".3rem"
         width={{base:'200px', lg:'100%'}}
         height="fit-content"
         borderRadius="10px"
@@ -56,7 +55,7 @@ const SmallBox: React.FC<SmallBoxProps> = ({ idx, item_index, handleClick, progr
             backgroundColor="gray.900"
             position={'relative'}
           >
-            <Image src={data?.background_image || '/images/cover_placeholder.jpg'} fill alt={'cover'} />
+            <Image src={data?.background_image || '/images/cover_placeholder.jpg'} fill alt={'cover'} className='rounded-[5px]' />
           </Box>
           <Heading as="h1" textAlign={'left'} fontSize={'.7rem'} className='leading-[16px]'>{truncateText(data?.name, 20)}</Heading>
         </Flex>
