@@ -1,6 +1,8 @@
 import { getGameAchievement } from '@/utils/actions/fetcher.action';
 import React from 'react'
-import Achievements from './Achievements';
+import dynamic from 'next/dynamic';
+
+const Achievements = dynamic(() => import('./Achievements'));
 
 const page = async ({params}:{params:any}) => {
   const {id} = params;

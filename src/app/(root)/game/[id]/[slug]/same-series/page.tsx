@@ -1,6 +1,8 @@
 import { getGameDetail, getGameOnTheSameSeries } from '@/utils/actions/fetcher.action';
 import React from 'react'
-import SameSeries from './SameSeries';
+import dynamic from 'next/dynamic';
+
+const SameSeries = dynamic(() => import('./SameSeries'));
 
 const page = async ({params}:{params:any}) => {
   const { id } = params;

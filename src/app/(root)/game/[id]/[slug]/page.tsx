@@ -1,8 +1,10 @@
 import React from 'react';
-import GameDetail from './GameDetail';
 import { getGameDetail } from '@/utils/actions/fetcher.action';
 import { checkGameInWishlist, getUserWishlist } from '@/utils/actions/db.action';
 import { getCurrentUser } from '@/utils/actions/auth.action';
+import dynamic from 'next/dynamic';
+
+const GameDetail = dynamic(() => import('./GameDetail')); 
 
 const page = async ({ params }: { params: any }) => {
   const { id } = params;

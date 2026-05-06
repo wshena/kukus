@@ -1,6 +1,8 @@
 import React from 'react'
-import AddOn from './AddOn';
 import { getGameAdditions, getGameDetail } from '@/utils/actions/fetcher.action';
+import dynamic from 'next/dynamic';
+
+const AddOn = dynamic(() => import('./AddOn'));
 
 const page = async ({params}:{params:any}) => {
   const { id } = params;  
